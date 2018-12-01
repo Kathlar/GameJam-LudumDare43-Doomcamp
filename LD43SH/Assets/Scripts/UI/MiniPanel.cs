@@ -39,6 +39,8 @@ public abstract class MiniPanel : MonoBehaviour
         float maxFill = slider.value;
         greenImage.fillAmount = Mathf.Clamp(greenImage.fillAmount, 0, maxFill);
         yellowImage.fillAmount = Mathf.Clamp(yellowImage.fillAmount, 0, maxFill - greenImage.fillAmount);
+        maxValueText.text = maxValue.ToString();
+
     }
 
     public void ShowBigPanel()

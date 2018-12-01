@@ -2456,6 +2456,15 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1918140080948782, guid: 6153396dec05e0345b4db6327fa8bf52, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114402906841577770, guid: 6153396dec05e0345b4db6327fa8bf52,
+        type: 2}
+      propertyPath: m_Text
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6153396dec05e0345b4db6327fa8bf52, type: 2}
   m_IsPrefabAsset: 0
@@ -3491,23 +3500,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 19
       objectReference: {fileID: 0}
-    - target: {fileID: 114703343258951504, guid: 773ce20c0e7fb9f479ea857ba69444dc,
-        type: 2}
-      propertyPath: resourceType
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1682895777336896, guid: 773ce20c0e7fb9f479ea857ba69444dc, type: 2}
       propertyPath: m_Name
       value: Workplace (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4824008781098046, guid: 773ce20c0e7fb9f479ea857ba69444dc, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -91.50201
-      objectReference: {fileID: 0}
     - target: {fileID: 114703343258951504, guid: 773ce20c0e7fb9f479ea857ba69444dc,
         type: 2}
-      propertyPath: gain
-      value: 0.05
+      propertyPath: resourceType
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114703343258951504, guid: 773ce20c0e7fb9f479ea857ba69444dc,
         type: 2}
