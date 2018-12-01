@@ -12,6 +12,7 @@ public class TrainManager : MonoBehaviour
     void Awake()
     {
         resources = GetComponent<CampResources>();
+        train.manager = this;
     }
 
     public void TrainSpawn()
