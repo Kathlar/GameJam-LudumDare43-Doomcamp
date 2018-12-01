@@ -13,6 +13,7 @@ public class DayTimeManager : MonoBehaviour
     void Awake()
     {
         campResources = GetComponent<CampResources>();
+        trainManager = GetComponent<TrainManager>();
     }
 
     void Start()

@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b876267d7580e45a8a08f5e8523e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 0}
+  manager: {fileID: 0}
 --- !u!65 &49648738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -769,8 +769,10 @@ MonoBehaviour:
   maximalX: 50
   minimalZ: -50
   maximalZ: 50
-  moveWithMouse: 1
+  moveWithMouse: 0
   screenBound: 50
+  minimalOffset: 0
+  maximalOffset: 0
 --- !u!1001 &739141009
 Prefab:
   m_ObjectHideFlags: 0
