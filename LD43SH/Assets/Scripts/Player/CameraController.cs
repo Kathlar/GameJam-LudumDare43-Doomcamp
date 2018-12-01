@@ -36,16 +36,16 @@ public class CameraController : MonoBehaviour
             if (Input.mousePosition.x < screenBound)
             {
                 newPosition.x -= moveSpeed * Time.deltaTime;
+            }
 
-                if (Input.mousePosition.y > screenHeight - screenBound)
-                {
-                    newPosition.z += moveSpeed * Time.deltaTime;
-                }
+            if (Input.mousePosition.y > screenHeight - screenBound)
+            {
+                newPosition.z += moveSpeed * Time.deltaTime;
+            }
 
-                if (Input.mousePosition.y < screenBound)
-                {
-                    newPosition.z -= moveSpeed * Time.deltaTime;
-                }
+            if (Input.mousePosition.y < screenBound)
+            {
+                newPosition.z -= moveSpeed * Time.deltaTime;
             }
 
             transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
