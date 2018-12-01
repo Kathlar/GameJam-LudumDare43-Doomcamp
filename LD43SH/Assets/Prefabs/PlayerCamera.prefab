@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 20455875161057336}
   - component: {fileID: 81349320318419136}
   - component: {fileID: 114124705358745762}
+  - component: {fileID: 114135431989260948}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -39,6 +40,7 @@ GameObject:
   - component: {fileID: 4755127378877070}
   - component: {fileID: 198960908752226986}
   - component: {fileID: 199828496241640900}
+  - component: {fileID: 114638618900470464}
   m_Layer: 0
   m_Name: Mist
   m_TagString: Untagged
@@ -67,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1836183310598126}
   m_LocalRotation: {x: -0.48192123, y: 0, z: -0, w: 0.87621456}
-  m_LocalPosition: {x: 0, y: 3.0810843, z: 15.215433}
+  m_LocalPosition: {x: 0, y: 2, z: 14.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4122367445304842}
@@ -140,6 +142,29 @@ MonoBehaviour:
   screenBound: 50
   minimalOffset: 0
   maximalOffset: 0
+--- !u!114 &114135431989260948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647563133907986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 90fe8bda2b64e894cbd61348ab3d4b47, type: 2}
+--- !u!114 &114638618900470464
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1836183310598126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3465c32b239084b45aef9645e9d4a332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &198960908752226986
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -389,7 +414,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 8
-      minScalar: 1
+      minScalar: 5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -771,7 +796,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 40, y: 5, z: 40}
+    m_Scale: {x: 40, y: 1, z: 40}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -1352,8 +1377,8 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 0}
-        key1: {r: 1, g: 1, b: 1, a: 0.21176471}
-        key2: {r: 0, g: 0, b: 0, a: 0.27450982}
+        key1: {r: 1, g: 1, b: 1, a: 0.46666667}
+        key2: {r: 0, g: 0, b: 0, a: 0.627451}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
