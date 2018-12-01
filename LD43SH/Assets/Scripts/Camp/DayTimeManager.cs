@@ -27,6 +27,6 @@ public class DayTimeManager : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 100), dayNumber.ToString());
+        GUI.Label(new Rect(10, 10, 100, 100), "DAY: " + dayNumber.ToString());
     }
 }
