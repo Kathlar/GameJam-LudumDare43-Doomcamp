@@ -6,18 +6,17 @@ using UnityEngine.AI;
 public class Worker : MonoBehaviour
 {
     float food;
-    public GameObject deadBody;
     public Workplace workplace;
     
     NavMeshAgent agent;
-    Animator animator;
+    private CharacterAnimations animations;
     
     public bool canWork = true;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animations = GetComponent<CharacterAnimations>();
     }
 
     private void Start()
@@ -39,12 +38,38 @@ public class Worker : MonoBehaviour
         // slacking (when morale is 0, there is 1% chance of slack every second, morale 100 - no chance)
         float slackChance = (1 - (CampResources.instance.morale.value / 100)) / 100;
         if (Random.Range(0.0f, 1.0f) < slackChance && canWork)
-            StartSlack();
+        {
+            if (Random.Range(0.0f, 1.0f) < 0.1f)
+                StartRunAway();
+            else
+                StartSlack();
+
+        }
+    }
+
+    public void DieCold()
+    {
+        Die();
+    }
+
+    public void DieHunger()
+    {
+        Die();
+    }
+
+    public void DieWork()
+    {
+        Die();
+    }
+
+    public void DieShot()
+    {
+        Die();
     }
 
     void Die()
     {
-        Instantiate(deadBody, transform.position, transform.rotation);
+        animations.Die();
         WorkerManager.WorkerDied(this);
         Destroy(gameObject);
     }
@@ -103,6 +128,7 @@ public class Worker : MonoBehaviour
     
     IEnumerator Work(Workplace workplace)
     {
+        yield return null;
         ActionData data;
         while(true)
         {
@@ -125,17 +151,31 @@ public class Worker : MonoBehaviour
     #region others
     IEnumerator IdleWalk()
     {
-        StopAllCoroutines();
         yield return null;
     }
 
     IEnumerator RunAway()
     {
+        animations.Escape();
         yield return null;
+        GetComponent<Renderer>().material.color = Color.cyan;
+        Vector3 pt = EscapingManager.GetEscapePoint(this);
+        agent.SetDestination(pt);
+        agent.speed = 1;
+
+        while (transform.position.magnitude < 30)
+        {
+            yield return new WaitForSeconds(1);
+        }
+
+        yield return new WaitForSeconds(Random.Range(5, 20));
+
+        DieCold();
     }
 
     IEnumerator Slack()
     {
+        yield return null;
         GetComponent<Renderer>().material.color = Color.black;
         for (int i = 0; i < 6; ++i)
         {
