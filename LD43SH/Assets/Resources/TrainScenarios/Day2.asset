@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
   food: 60
   numberOfPeople: 30
-  numberOfDaysToNextTrain: 14
+  numberOfDaysToNextTrain: 7
   minimalWoodValue: 50
   minimalMetalValue: 0
   minimalStoneValue: 0

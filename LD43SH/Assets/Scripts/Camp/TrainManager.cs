@@ -15,13 +15,13 @@ public class TrainManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        resources = CampResources.instance;
         train = FindObjectOfType<Train>();
         train.manager = this;
     }
 
     void Start()
     {
+        resources = CampResources.instance;
         numberOfDaysToNextTrain = 1;
         TrainSpawn();
     }

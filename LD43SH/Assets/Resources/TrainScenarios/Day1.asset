@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Day1
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
-  food: 40
-  numberOfPeople: 40
-  numberOfDaysToNextTrain: 14
+  food: 30
+  numberOfPeople: 20
+  numberOfDaysToNextTrain: 7
   minimalWoodValue: 0
   minimalMetalValue: 0
   minimalStoneValue: 0
