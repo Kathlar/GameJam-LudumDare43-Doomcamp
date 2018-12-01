@@ -11,9 +11,13 @@ public abstract class MiniPanel : MonoBehaviour
     public Slider slider;
     public Text currentValueText;
 
+    public BigPanel bigPanel;
+
     protected virtual void Start()
     {
         mainCamera = Camera.main;
+        if(bigPanel != null)
+            bigPanel.gameObject.SetActive(false);
     }
 
     protected virtual void Update()
@@ -27,5 +31,11 @@ public abstract class MiniPanel : MonoBehaviour
         float maxFill = slider.value;
         greenImage.fillAmount = Mathf.Clamp(greenImage.fillAmount, 0, maxFill);
         yellowImage.fillAmount = Mathf.Clamp(yellowImage.fillAmount, 0, maxFill - greenImage.fillAmount);
+    }
+
+    public void ShowBigPanel()
+    {
+        bigPanel.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

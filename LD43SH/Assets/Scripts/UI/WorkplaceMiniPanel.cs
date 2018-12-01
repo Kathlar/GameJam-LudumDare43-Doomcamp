@@ -9,6 +9,9 @@ public class WorkplaceMiniPanel : MiniPanel
 
     protected override void Start()
     {
+        if(bigPanel == null)
+            bigPanel = FindObjectOfType<WorkplaceBigPanel>();
+
         if (workplace == null) workplace = FindObjectOfType<Workplace>();
         objectPanel = workplace.transform;
         base.Start();
