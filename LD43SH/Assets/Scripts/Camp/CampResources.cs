@@ -23,15 +23,15 @@ public class CampResources : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-    void Start()
-    {
         Resources.Add(food);
         Resources.Add(morale);
         Resources.Add(metal);
         Resources.Add(stone);
         Resources.Add(wood);
+    }
+
+    void Start()
+    {
         CountPeople();
     }
 

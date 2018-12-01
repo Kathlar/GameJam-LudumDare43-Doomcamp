@@ -13,7 +13,6 @@ public class DayTimeManager : MonoBehaviour
     void Awake()
     {
         campResources = GetComponent<CampResources>();
-        trainManager = GetComponent<TrainManager>();
     }
 
     void Start()
@@ -25,7 +24,7 @@ public class DayTimeManager : MonoBehaviour
     {
         dayNumber++;
         campResources.DailyUseOfResources();
-        trainManager.TrainSpawn();
+        TrainManager.Instance.TrainSpawn();
     }
 
     void OnGUI()
