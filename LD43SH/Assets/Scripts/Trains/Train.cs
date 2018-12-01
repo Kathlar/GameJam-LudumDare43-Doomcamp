@@ -7,10 +7,20 @@ public class Train : MonoBehaviour
 {
     [HideInInspector] public TrainManager manager;
     protected SplineFollow spline;
+    private TrainStopper stopper;
+    private float distance, startSplineSpeed;
 
     void Awake()
     {
         spline = GetComponent<SplineFollow>();
+        stopper = FindObjectOfType<TrainStopper>();
+        startSplineSpeed = spline.Speed;
+    }
+
+    void Update()
+    {
+        distance = Vector3.Distance(transform.position, stopper.transform.position);
+        spline.Speed = startSplineSpeed * Mathf.Clamp(distance / 30, 0, 1);
     }
 
     public void SpawnTrain()
