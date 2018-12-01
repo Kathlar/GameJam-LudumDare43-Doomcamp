@@ -9,13 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Day1
+  m_Name: Day4
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
-  food: 40
-  numberOfPeople: 40
-  numberOfDaysToNextTrain: 30
+  food: 0
+  numberOfPeople: 0
+  numberOfDaysToNextTrain: 10
   minimalWoodValue: 0
   minimalMetalValue: 0
   minimalStoneValue: 0
-  comradeText: Greetings, comrade. Here are som' peps and food. gl. Btw next month
-    gimme 100 lumber or gtfo.
+  comradeText: 

@@ -11,6 +11,10 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Day2
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
-  food: 10
-  numberOfPeople: 4
+  food: 60
+  numberOfPeople: 30
   numberOfDaysToNextTrain: 30
+  minimalWoodValue: 100
+  minimalMetalValue: 0
+  minimalStoneValue: 0
+  comradeText: Hello there, tank you for woud. Have some free dudes.

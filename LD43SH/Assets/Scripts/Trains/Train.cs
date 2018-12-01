@@ -8,12 +8,14 @@ public class Train : MonoBehaviour
     [HideInInspector] public TrainManager manager;
     protected SplineFollow spline;
     private TrainStopper stopper;
+    private TrainWorkerSpawner workerSpawner;
     private float distance, startSplineSpeed;
 
     void Awake()
     {
         spline = GetComponent<SplineFollow>();
         stopper = FindObjectOfType<TrainStopper>();
+        workerSpawner = gameObject.GetComponent<TrainWorkerSpawner>();
         startSplineSpeed = spline.Speed;
     }
 
@@ -32,8 +34,9 @@ public class Train : MonoBehaviour
     public void StopTrain()
     {
         spline.IsRunning = false;
+        workerSpawner.SpawnWorkers(manager.TrainScenarios[0].numberOfPeople);
         manager.TrainArrive();
-        Invoke("StartTrain", 4);
+        Invoke("StartTrain", 10);
     }
 
     public void StartTrain()

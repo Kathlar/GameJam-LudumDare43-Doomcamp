@@ -22,7 +22,8 @@ public class TrainManager : MonoBehaviour
 
     void Start()
     {
-        numberOfDaysToNextTrain = TrainScenarios[0].numberOfDaysToNextTrain;
+        numberOfDaysToNextTrain = 1;
+        TrainSpawn();
     }
 
     public void TrainSpawn()
@@ -37,8 +38,30 @@ public class TrainManager : MonoBehaviour
         //train arrives on station
         TrainScenario scenario = TrainScenarios[0];
         resources.food.value += scenario.food;
-        bool gotEnoughResources = resources.TakeEverything(scenario);
-        FindObjectOfType<TrainInfo>().ShowTrainInfo(scenario);
+
+        CampResources.instance.morale.value = Mathf.Clamp(
+            CampResources.instance.morale.value + 30.0f, 0, 100);
+
+        string failComment = "";
+        bool gotEnoughResources = resources.TakeEverything(scenario, out failComment);
+        if (scenario.numberOfPeople < 0)
+        {
+            if (WorkerManager.workers.Count < scenario.numberOfPeople)
+            {
+                gotEnoughResources = false;
+                failComment = "oh, everyone looks pretty dead, but wee need at least " + scenario.numberOfPeople + " new workers... Hey, at least we can take you!";
+            }
+            else
+            {
+                for (int i = WorkerManager.workers.Count - 1; i >= 0; --i)
+                {
+                    Worker w = WorkerManager.workers[i];
+                    w.DieSilent();
+                }
+            }
+        }
+
+        FindObjectOfType<TrainInfo>().ShowTrainInfo(scenario, gotEnoughResources);
         //spawn people
         if (TrainScenarios.Count > 1) TrainScenarios.RemoveAt(0);
         numberOfDaysToNextTrain = scenario.numberOfDaysToNextTrain;

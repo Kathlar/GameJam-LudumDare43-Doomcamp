@@ -33,8 +33,20 @@ public class Worker : MonoBehaviour
 
     void UpdateState()
     {
-        // food, death
-        food = Mathf.MoveTowards(food, 0, 0.001f); // 1000 seconds for a dude to die
+        // food, death (12 days to die with no food)
+
+        float reduction = (1 / 120);
+
+        if (CampResources.instance.food.value > 0)
+        {
+            float taken = (1 / 120) * CampResources.instance.foodRationsRate;
+            reduction -= taken;
+
+            CampResources.instance.food.value = Mathf.Clamp(
+                CampResources.instance.food.value - taken, 0, 1000);
+        }
+
+        food = Mathf.MoveTowards(food, 0, reduction);
         if (food == 0)
         {
             Die();
@@ -61,27 +73,43 @@ public class Worker : MonoBehaviour
 
     public void WorkedWithNoTools()
     {
+        CampResources.instance.morale.value = Mathf.Clamp(
+            CampResources.instance.morale.value - 0.01f, 0, 100);
         health = Mathf.Clamp(health - 0.1f, 0, 10);
     }
 
     public void DieCold()
     {
+        CampResources.instance.morale.value = Mathf.Clamp(
+            CampResources.instance.morale.value - 2, 0, 100);
         Die();
     }
 
     public void DieHunger()
     {
+        CampResources.instance.morale.value = Mathf.Clamp(
+            CampResources.instance.morale.value - 1, 0, 100);
         Die();
     }
 
     public void DieWork()
     {
+        CampResources.instance.morale.value = Mathf.Clamp(
+            CampResources.instance.morale.value - 1, 0, 100);
         Die();
     }
 
     public void DieShot()
     {
+        CampResources.instance.morale.value = Mathf.Clamp(
+            CampResources.instance.morale.value + 10, 0, 100);
         Die();
+    }
+
+    public void DieSilent()
+    {
+        WorkerManager.WorkerDied(this);
+        Destroy(gameObject);
     }
 
     void Die()

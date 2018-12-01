@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TrainInfo : MonoBehaviour
@@ -23,8 +24,11 @@ public class TrainInfo : MonoBehaviour
         }
     }
 
-    public void ShowTrainInfo(TrainScenario scenario)
+    public void ShowTrainInfo(TrainScenario scenario, bool gotEnoughResourcess)
     {
+        if (!gotEnoughResourcess)
+            SceneManager.LoadScene(0);
+
         showing = true;
         Time.timeScale = 0;
         parentObj.SetActive(true);
