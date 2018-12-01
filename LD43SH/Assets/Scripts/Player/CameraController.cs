@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     {
         currentOffset = transform.position.y;
         minimalOffset = currentOffset * .7f;
-        maximalOffset = currentOffset * 1.3f;
+        maximalOffset = currentOffset * 1.6f;
     }
 
     void Update()
