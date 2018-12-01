@@ -52,6 +52,7 @@ public class Worker : MonoBehaviour
         if (health == 0)
         {
             health = 1.0f; // przedsmiertna pasja
+
             Invoke("DieWork", Random.Range(0.0f, 20.0f));
         }
     }
@@ -127,16 +128,6 @@ public class Worker : MonoBehaviour
         StartCoroutine(Slack());
     }
 
-    public void StartBunt()
-    {
-        canWork = false;
-        if (workplace)
-            workplace.workers.Remove(this);
-        workplace = null;
-        StopAllCoroutines();
-        StartCoroutine(Bunt());
-    }
-
     #endregion
     #region work
     
@@ -201,11 +192,6 @@ public class Worker : MonoBehaviour
         }
         GetComponent<Renderer>().material.color = Color.blue;
         StartIdle();
-    }
-
-    IEnumerator Bunt()
-    {
-        yield return null;
     }
     #endregion
 }
