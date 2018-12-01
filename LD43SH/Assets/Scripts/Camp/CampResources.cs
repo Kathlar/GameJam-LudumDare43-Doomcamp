@@ -19,6 +19,7 @@ public class CampResources : MonoBehaviour
     public Text numberOfPeopleText, numberOfGuardsText;
 
     public static CampResources instance;
+    public static float lastMetalTaken, lastWoodTaken, lastStoneTaken;
 
     private void Awake()
     {
@@ -63,6 +64,28 @@ public class CampResources : MonoBehaviour
     {
         //numberOfGuards = ;
         numberOfPeople = WorkerManager.workers.Count;
+    }
+
+    public bool TakeEverything(TrainScenario scenario)
+    {
+        if (metal.value < scenario.minimalMetalValue || wood.value < scenario.minimalWoodValue ||
+            stone.value < scenario.minimalStoneValue)
+        {
+            return false;
+            //loose
+        }
+        else
+        {
+            lastMetalTaken = metal.value;
+            lastWoodTaken = wood.value;
+            lastStoneTaken = stone.value;
+
+            metal.value = 0;
+            wood.value = 0;
+            stone.value = 0;
+
+            return true;
+        }
     }
 }
 

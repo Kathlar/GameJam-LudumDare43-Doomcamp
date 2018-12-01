@@ -37,6 +37,8 @@ public class TrainManager : MonoBehaviour
         //train arrives on station
         TrainScenario scenario = TrainScenarios[0];
         resources.food.value += scenario.food;
+        bool gotEnoughResources = resources.TakeEverything(scenario);
+        FindObjectOfType<TrainInfo>().ShowTrainInfo(scenario);
         //spawn people
         if (TrainScenarios.Count > 1) TrainScenarios.RemoveAt(0);
         numberOfDaysToNextTrain = scenario.numberOfDaysToNextTrain;
@@ -55,4 +57,7 @@ public class TrainScenario : ScriptableObject
     public float food;
     public int numberOfPeople;
     public int numberOfDaysToNextTrain = 10;
+    public float minimalWoodValue, minimalMetalValue, minimalStoneValue;
+    [TextArea]
+    public string comradeText;
 }

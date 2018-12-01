@@ -13,3 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
   food: 20
   numberOfPeople: 3
+  numberOfDaysToNextTrain: 2
+  minimalWoodValue: 0
+  minimalMetalValue: 0
+  minimalStoneValue: 0
+  comradeText: 'Greetings, comrade. '
