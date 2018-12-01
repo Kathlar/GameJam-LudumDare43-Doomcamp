@@ -409,10 +409,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1551c03e44a5abe48938d234cbc7dba7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  namePanel: {fileID: 114880794488095154}
   greenImage: {fileID: 114633097853342354}
   yellowImage: {fileID: 114014579311770602}
   slider: {fileID: 114119468418034720}
   currentValueText: {fileID: 114207643683569158}
+  maxValueText: {fileID: 114402906841577770}
   bigPanel: {fileID: 0}
   workplace: {fileID: 0}
 --- !u!114 &114345327126103190
@@ -474,7 +476,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 8
 --- !u!114 &114514417089158088
 MonoBehaviour:
   m_ObjectHideFlags: 1

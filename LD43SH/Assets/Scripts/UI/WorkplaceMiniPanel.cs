@@ -5,7 +5,6 @@ using UnityEngine;
 public class WorkplaceMiniPanel : MiniPanel
 {
     public Workplace workplace;
-    private int maxValue = 10;
 
     protected override void Start()
     {
@@ -15,10 +14,12 @@ public class WorkplaceMiniPanel : MiniPanel
         if (workplace == null) workplace = FindObjectOfType<Workplace>();
         objectPanel = workplace.transform;
         base.Start();
+        namePanel.text = "Workplace (" + workplace.resourceType.ToString() + ")";
     }
 
     protected override void Update()
     {
+        maxValue = workplace.maxWorkersCount;
         base.Update();
         float greenValue = workplace.workers.Count - workplace.workersWithoutTools;
         float yellowValue = workplace.workersWithoutTools;
@@ -26,7 +27,7 @@ public class WorkplaceMiniPanel : MiniPanel
 
         greenImage.fillAmount = greenValue / maxValue;
         yellowImage.fillAmount = yellowValue / maxValue;
-        //slider.value = desiredValue / maxValue;
+        slider.value = desiredValue / maxValue;
         currentValueText.text = Mathf.Floor(slider.value * maxValue).ToString();
     }
 
