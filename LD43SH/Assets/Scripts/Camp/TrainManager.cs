@@ -7,6 +7,7 @@ public class TrainManager : MonoBehaviour
 {
     protected CampResources resources;
     public List<TrainScenario> TrainScenarios;
+    public Train train;
 
     void Awake()
     {
