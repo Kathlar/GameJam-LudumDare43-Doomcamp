@@ -10,8 +10,7 @@ public class Workplace : MonoBehaviour
 
     private void Start()
     {
-        foreach (Worker worker in WorkerManager.workers)
-            worker.StartWorking(this);
+        Invoke("Test", 1.0f);
     }
 
     public ActionData GetAction()
@@ -19,13 +18,11 @@ public class Workplace : MonoBehaviour
         return waypoints[Random.Range(0, waypoints.Length)];
     }
 
-    //periodically update production, handle null, dead workers
-}
+    void Test()
+    {
+        foreach (Worker worker in WorkerManager.workers)
+            worker.StartWorking(this);
+    }
 
-[System.Serializable]
-public class ActionData
-{
-    public string animName;
-    public float time;
-    public Transform place;
+    //periodically update production, handle null, dead workers
 }

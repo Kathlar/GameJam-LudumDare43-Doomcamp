@@ -17,12 +17,11 @@ public class Worker : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
 
-        WorkerManager.WorkerNew(this);
     }
 
     private void Start()
     {
-        //StartCoroutine(IdleWalk());
+        WorkerManager.WorkerNew(this);
         InvokeRepeating("UpdateState", Random.Range(0.0f, 1.0f), 1.0f);
     }
 
@@ -85,10 +84,10 @@ public class Worker : MonoBehaviour
         {
             data = workplace.GetAction();
             agent.SetDestination(data.place.position);
-            
-            yield return new WaitForEndOfFrame(); // wait until agents updates his path
-            
-            while (agent.remainingDistance > 1.5f)
+
+            // wait until agents updates his path
+            yield return new WaitForSeconds(0.5f);
+            while (agent.remainingDistance > 1f)
                 yield return new WaitForEndOfFrame();
             
             //animator.SetTrigger(data.animName);
