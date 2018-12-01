@@ -25,6 +25,8 @@ public class CampResources : MonoBehaviour
     public float foodRationsRate = 0.5f;
     public static float lastMetalTaken, lastWoodTaken, lastStoneTaken;
 
+    public Slider foodRationsSlider;
+
     private void Awake()
     {
         instance = this;
@@ -55,6 +57,11 @@ public class CampResources : MonoBehaviour
 
         numberOfPeopleText.text = "Workers\n" + numberOfPeople.ToString();
         numberOfGuardsText.text = "Guards\n" + numberOfGuards.ToString();
+    }
+
+    public void SetFoodRations()
+    {
+        foodRationsRate = foodRationsSlider.value;
     }
 
     public Resource GetResource(ResourceType resourceType)

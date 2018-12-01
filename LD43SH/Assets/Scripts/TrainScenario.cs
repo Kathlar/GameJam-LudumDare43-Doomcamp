@@ -12,4 +12,6 @@ public class TrainScenario : ScriptableObject
     [TextArea]
     public string comradeText;
 
+
+
 }

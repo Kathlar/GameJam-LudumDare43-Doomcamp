@@ -59,16 +59,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
-        {
-            newPosition.y = Mathf.Clamp(transform.position.y - 2 * moveSpeed * moveSpeed * Time.deltaTime * Time.deltaTime, minimalOffset,
-                maximalOffset);
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            newPosition.y = Mathf.Clamp(transform.position.y + 2 * moveSpeed * moveSpeed * Time.deltaTime * Time.deltaTime, minimalOffset,
-                maximalOffset);
-        }
+        newPosition.y = Mathf.Clamp(newPosition.y - Input.GetAxis("Mouse ScrollWheel") * moveSpeed, minimalOffset, maximalOffset);
 
         transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
     }

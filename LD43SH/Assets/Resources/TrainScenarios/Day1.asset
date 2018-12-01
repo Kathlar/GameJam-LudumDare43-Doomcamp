@@ -8,14 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0ccc5a3754a80ef42b8f535f9a6dbc45, type: 3}
   m_Name: Day1
-  m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
+  m_EditorClassIdentifier: 
   food: 30
   numberOfPeople: 20
   numberOfDaysToNextTrain: 7
   minimalWoodValue: 0
   minimalMetalValue: 0
   minimalStoneValue: 0
-  comradeText: Greetings, comrade. Here are som' peps and food. gl. Btw next month
-    gimme 50 lumber or gtfo.
+  comradeText: Train 1

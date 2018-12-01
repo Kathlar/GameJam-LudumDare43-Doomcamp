@@ -8,14 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 0ccc5a3754a80ef42b8f535f9a6dbc45, type: 3}
   m_Name: Day2
-  m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
+  m_EditorClassIdentifier: 
   food: 60
   numberOfPeople: 30
   numberOfDaysToNextTrain: 7
   minimalWoodValue: 50
   minimalMetalValue: 0
   minimalStoneValue: 0
-  comradeText: Hello there, tank you for woud. Have some free dudes. next month 75
-    lumber and boulders
+  comradeText: Train 2
