@@ -14,6 +14,7 @@ public class WorkplaceMiniPanel : MiniPanel
         if (workplace == null) workplace = FindObjectOfType<Workplace>();
         objectPanel = workplace.transform;
         base.Start();
+        namePanel.text = "Workplace (" + workplace.resourceType.ToString() + ")";
     }
 
     protected override void Update()

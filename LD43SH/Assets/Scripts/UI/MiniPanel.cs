@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public abstract class MiniPanel : MonoBehaviour
 {
+    public Text namePanel;
     public static List<MiniPanel> miniPanels;
     private Camera mainCamera;
     protected Transform objectPanel;
