@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class CharacterAnimations : MonoBehaviour
 {
+    private Worker worker;
     private Vector3 lastPosition;
     public Animator animator;
 
     void Start()
     {
         lastPosition = transform.position;
+        worker = GetComponent<Worker>();
     }
 
     void Update()
     {
-        if (transform.position != lastPosition)
+        if (Vector3.Distance(transform.position, lastPosition) > .2f * Time.deltaTime)
         {
             animator.SetBool("Move", true);
         }
@@ -23,11 +25,30 @@ public class CharacterAnimations : MonoBehaviour
             animator.SetBool("Move", false);
         }
         lastPosition = transform.position;
+
+        if (worker != null)
+        {
+            if (worker.workplace != null && worker.data != null)
+            {
+                if(Vector3.Distance(worker.transform.position, worker.data.place.position) < 1.5f) Work();
+                else StopWork();
+            }
+        }
     }
 
     public void Escape()
     {
         animator.SetBool("Escape", true);
+    }
+
+    public void Work()
+    {
+        animator.SetBool("Work", true);
+    }
+
+    public void StopWork()
+    {
+        animator.SetBool("Work", false);
     }
 
     public void Die()
