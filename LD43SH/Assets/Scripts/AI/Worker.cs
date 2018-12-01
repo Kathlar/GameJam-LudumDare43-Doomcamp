@@ -6,18 +6,17 @@ using UnityEngine.AI;
 public class Worker : MonoBehaviour
 {
     float food;
-    public GameObject deadBody;
     public Workplace workplace;
     
     NavMeshAgent agent;
-    Animator animator;
+    private CharacterAnimations animations;
     
     public bool canWork = true;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        animations = GetComponent<CharacterAnimations>();
     }
 
     private void Start()
@@ -44,7 +43,8 @@ public class Worker : MonoBehaviour
 
     void Die()
     {
-        Instantiate(deadBody, transform.position, transform.rotation);
+        animations.Die();
+        //Instantiate(deadBody, transform.position, transform.rotation);
         WorkerManager.WorkerDied(this);
         Destroy(gameObject);
     }
