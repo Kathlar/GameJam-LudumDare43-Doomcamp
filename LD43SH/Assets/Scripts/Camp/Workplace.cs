@@ -10,9 +10,15 @@ public class Workplace : MonoBehaviour
     [Range(0, 100)]
     public int desiredWorkersCount;
     public List<Worker> workers;
+    [Range(0.0F, 100.0F)]
+    public float gain = 1.0F;
+
+    protected Resource resource;
 
     private void Start()
     {
+        resource = CampResources.instance.GetResource(resourceType);
+
         InvokeRepeating("UpdateTick", Random.value, 1.0F);
     }
 
@@ -24,7 +30,7 @@ public class Workplace : MonoBehaviour
     private void UpdateTick()
     {
         UpdateWorkersCount();
-        UpdateResources();
+        UpdateResource();
     }
 
     private void RemoveDeadWorkers()
@@ -68,9 +74,9 @@ public class Workplace : MonoBehaviour
         }
     }
 
-    private void UpdateResources()
+    private void UpdateResource()
     {
-        
+        resource.value += gain * workers.Count;
     }
 
     public ActionData GetAction()

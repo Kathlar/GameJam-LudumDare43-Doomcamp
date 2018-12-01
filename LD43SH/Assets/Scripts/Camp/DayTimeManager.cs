@@ -24,7 +24,7 @@ public class DayTimeManager : MonoBehaviour
     {
         dayNumber++;
         campResources.DailyUseOfResources();
-        trainManager.TrainSpawn();
+        TrainManager.Instance.TrainSpawn();
     }
 
     void OnGUI()

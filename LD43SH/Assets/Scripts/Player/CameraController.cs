@@ -13,6 +13,16 @@ public class CameraController : MonoBehaviour
     private int screenWidth, screenHeight;
     public int screenBound = 50;
 
+    private float currentOffset;
+    public float minimalOffset, maximalOffset;
+
+    void Start()
+    {
+        currentOffset = transform.position.y;
+        minimalOffset = currentOffset * .7f;
+        maximalOffset = currentOffset * 1.3f;
+    }
+
     void Update()
     {
         //Move with keys
@@ -47,9 +57,20 @@ public class CameraController : MonoBehaviour
             {
                 newPosition.z -= moveSpeed * Time.deltaTime;
             }
-
-            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
         }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            newPosition.y = Mathf.Clamp(transform.position.y - 2 * moveSpeed * Time.deltaTime, minimalOffset,
+                maximalOffset);
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            newPosition.y = Mathf.Clamp(transform.position.y + 2 * moveSpeed * Time.deltaTime, minimalOffset,
+                maximalOffset);
+        }
+
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
     }
 
     void OnDrawGizmos()

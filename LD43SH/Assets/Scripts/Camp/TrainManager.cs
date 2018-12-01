@@ -5,19 +5,31 @@ using UnityEngine;
 
 public class TrainManager : MonoBehaviour
 {
+    public static TrainManager Instance;
+
     protected CampResources resources;
     public List<TrainScenario> TrainScenarios;
+    private int numberOfDaysToNextTrain;
     public Train train;
 
     void Awake()
     {
-        resources = GetComponent<CampResources>();
+        Instance = this;
+        resources = CampResources.instance;
+        train = FindObjectOfType<Train>();
         train.manager = this;
+    }
+
+    void Start()
+    {
+        numberOfDaysToNextTrain = TrainScenarios[0].numberOfDaysToNextTrain;
     }
 
     public void TrainSpawn()
     {
-        //create train object
+        numberOfDaysToNextTrain--;
+        if(numberOfDaysToNextTrain <= 0)
+            train.SpawnTrain();
     }
 
     public void TrainArrive()
@@ -27,6 +39,12 @@ public class TrainManager : MonoBehaviour
         resources.food.value += scenario.food;
         //spawn people
         if (TrainScenarios.Count > 1) TrainScenarios.RemoveAt(0);
+        numberOfDaysToNextTrain = scenario.numberOfDaysToNextTrain;
+    }
+
+    void OnGUI()
+    {
+        GUI.Label(new Rect(10, 40, 150, 100), "Days to next train: " + numberOfDaysToNextTrain.ToString());
     }
 }
 
@@ -36,4 +54,5 @@ public class TrainScenario : ScriptableObject
 {
     public float food;
     public int numberOfPeople;
+    public int numberOfDaysToNextTrain = 10;
 }
