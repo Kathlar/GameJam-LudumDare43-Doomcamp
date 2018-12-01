@@ -14,6 +14,8 @@ public class Worker : MonoBehaviour
     
     public bool canWork = true;
 
+    public WorkerState curState = WorkerState.idle;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -92,6 +94,7 @@ public class Worker : MonoBehaviour
     #region commands
     public void StartWorking(Workplace workplace)
     {
+        curState = WorkerState.working;
         canWork = true;
         this.workplace = workplace;
         StopAllCoroutines();
@@ -100,6 +103,7 @@ public class Worker : MonoBehaviour
 
     public void StartIdle()
     {
+        curState = WorkerState.idle;
         canWork = true;
         if (workplace)
             workplace.workers.Remove(this);
@@ -110,6 +114,7 @@ public class Worker : MonoBehaviour
 
     public void StartRunAway()
     {
+        curState = WorkerState.running;
         canWork = false;
         if (workplace)
             workplace.workers.Remove(this);
@@ -120,12 +125,20 @@ public class Worker : MonoBehaviour
 
     public void StartSlack()
     {
+        curState = WorkerState.slacking;
         canWork = false;
         if (workplace)
             workplace.workers.Remove(this);
         workplace = null;
         StopAllCoroutines();
         StartCoroutine(Slack());
+    }
+
+    public void StartGettingBeaten()
+    {
+        curState = WorkerState.beaten;
+        StopAllCoroutines();
+        StartCoroutine(GetBeaten());
     }
 
     #endregion
@@ -193,5 +206,26 @@ public class Worker : MonoBehaviour
         GetComponent<Renderer>().material.color = Color.blue;
         StartIdle();
     }
+    
+    IEnumerator GetBeaten() // get rekt
+    {
+        yield return null;
+
+        agent.SetDestination(transform.position);
+        // trigger some animation
+
+        yield return new WaitForSeconds(5.0f);
+        health = Mathf.Clamp(health - 0.3f, 0, 2); // beating hurts
+        canWork = true;
+    }
     #endregion
+}
+
+public enum WorkerState
+{
+    working,
+    idle,
+    slacking,
+    running,
+    beaten,
 }
