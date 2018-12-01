@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MiniPanel : MonoBehaviour
+public abstract class MiniPanel : MonoBehaviour
 {
     private Camera mainCamera;
-    public Transform objectPanel;
+    protected Transform objectPanel;
     public Image greenImage, yellowImage;
     public Slider slider;
+    public Text currentValueText;
 
-    void Start()
+    public BigPanel bigPanel;
+
+    protected virtual void Start()
     {
         mainCamera = Camera.main;
+        if(bigPanel != null)
+            bigPanel.gameObject.SetActive(false);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if(objectPanel != null)
             transform.position = mainCamera.WorldToScreenPoint(objectPanel.position + objectPanel.up);
@@ -26,5 +31,11 @@ public class MiniPanel : MonoBehaviour
         float maxFill = slider.value;
         greenImage.fillAmount = Mathf.Clamp(greenImage.fillAmount, 0, maxFill);
         yellowImage.fillAmount = Mathf.Clamp(yellowImage.fillAmount, 0, maxFill - greenImage.fillAmount);
+    }
+
+    public void ShowBigPanel()
+    {
+        bigPanel.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 }

@@ -12,7 +12,9 @@ public class Workplace : MonoBehaviour
     public List<Worker> workers;
     [Range(0.0F, 100.0F)]
     public float gain = 1.0F;
-    private int noTools = 0;
+    public int maxWorkersCount = 100;
+    [HideInInspector]
+    public int workersWithoutTools = 0;
 
     protected Resource resource;
     
@@ -21,18 +23,13 @@ public class Workplace : MonoBehaviour
         resource = CampResources.instance.GetResource(resourceType);
         DayTimeManager.instance.OnDayEnd += OnDayEnd;
 
-        InvokeRepeating("UpdateTick", Random.value, 1.0F);
+        InvokeRepeating("UpdateWorkersCount", Random.value, 0.5F);
+        InvokeRepeating("UpdateResource", Random.value, 1.0F);
     }
 
     private void Update()
     {
         RemoveDeadWorkers();
-    }
-
-    private void UpdateTick()
-    {
-        UpdateWorkersCount();
-        UpdateResource();
     }
 
     private void RemoveDeadWorkers()
@@ -52,27 +49,21 @@ public class Workplace : MonoBehaviour
         {
             foreach (Worker worker in WorkerManager.workers)
             {
-                if (workers.Count >= desiredWorkersCount)
-                {
-                    break;
-                }
-
                 if (worker.workplace == null && worker.canWork)
                 {
                     workers.Add(worker);
                     worker.StartWorking(this);
+
+                    break;
                 }
             }
         }
         else if (workers.Count > desiredWorkersCount)
         {
-            for (int i = workers.Count - 1; i >= desiredWorkersCount; i--)
-            {
-                Worker worker = workers[i];
+            Worker worker = workers[workers.Count - 1];
 
-                worker.StartIdle();
-                workers.RemoveAt(i);
-            }
+            workers.Remove(worker);
+            worker.StartIdle();
         }
     }
 
@@ -91,7 +82,7 @@ public class Workplace : MonoBehaviour
                 );
 
             effitiency += gain * tools / 2;
-            noTools = workers.Count - tools;
+            workersWithoutTools = workers.Count - tools;
         }
         else if (resourceType == ResourceType.Wood)
         {
@@ -101,7 +92,7 @@ public class Workplace : MonoBehaviour
                 (int)CampResources.instance.axes.value);
 
             effitiency += gain * tools / 2;
-            noTools = workers.Count - tools;
+            workersWithoutTools = workers.Count - tools;
         }
         else if (resourceType == ResourceType.Metal)
         {
@@ -111,7 +102,7 @@ public class Workplace : MonoBehaviour
                 (int)CampResources.instance.picks.value);
 
             effitiency += gain * tools / 2;
-            noTools = workers.Count - tools;
+            workersWithoutTools = workers.Count - tools;
         }
         else // tool workshop: always full production
         {
@@ -123,10 +114,10 @@ public class Workplace : MonoBehaviour
 
     public void OnDayEnd()
     {
-        for (int i = 0; i < noTools && i < workers.Count; ++i)
+        for (int i = 0; i < workersWithoutTools && i < workers.Count; ++i)
             workers[i].WorkedWithNoTools();
 
-        int toolsDestroyed = (workers.Count - noTools) / 10;
+        int toolsDestroyed = (workers.Count - workersWithoutTools) / 10;
 
         if (resourceType == ResourceType.Stone)
             CampResources.instance.hammers.value = Mathf.Clamp(

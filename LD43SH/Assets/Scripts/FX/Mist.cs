@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mist : MonoBehaviour {
+public class Mist : MonoBehaviour
+{
+    protected float defaultPositionY;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+	private void Start()
+    {
+        defaultPositionY = transform.position.y;
+    }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	private void Update()
+    {
+        Vector3 position = transform.position;
+
+        position.y = defaultPositionY;
+
+        transform.position = position;
+    }
 }
