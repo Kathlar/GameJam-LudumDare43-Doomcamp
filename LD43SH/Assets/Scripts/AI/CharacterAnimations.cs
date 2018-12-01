@@ -24,4 +24,15 @@ public class CharacterAnimations : MonoBehaviour
         }
         lastPosition = transform.position;
     }
+
+    public void Escape()
+    {
+        animator.SetBool("Escape", true);
+    }
+
+    public void Die()
+    {
+        animator.transform.SetParent(null);
+        animator.SetBool("Dead", true);
+    }
 }

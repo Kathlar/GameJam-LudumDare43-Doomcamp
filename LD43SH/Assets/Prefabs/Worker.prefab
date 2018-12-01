@@ -1433,7 +1433,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c2193e69d91057408701cd061c5b52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadBody: {fileID: 0}
   workplace: {fileID: 0}
   canWork: 1
 --- !u!135 &135346603012946380
@@ -1545,7 +1544,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1866112258698358}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Speed: 2
   m_Acceleration: 30
   avoidancePriority: 50
