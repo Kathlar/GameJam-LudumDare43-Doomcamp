@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayNumber: 1
-  dayLength: 10
+  dayLength: 5
 --- !u!1 &136459168
 GameObject:
   m_ObjectHideFlags: 0
@@ -1801,11 +1801,6 @@ Prefab:
     - target: {fileID: 4040558444326498, guid: 2e80b113df65e024494d3741b4384c8a, type: 2}
       propertyPath: m_RootOrder
       value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 114442517510447308, guid: 2e80b113df65e024494d3741b4384c8a,
-        type: 2}
-      propertyPath: m_persistentVersions.Array.data[0]
-      value: 139
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e80b113df65e024494d3741b4384c8a, type: 2}
