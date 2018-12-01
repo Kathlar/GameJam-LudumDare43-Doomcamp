@@ -12,12 +12,14 @@ public class Workplace : MonoBehaviour
     public List<Worker> workers;
     [Range(0.0F, 100.0F)]
     public float gain = 1.0F;
+    private int noTools = 0;
 
     protected Resource resource;
-
+    
     private void Start()
     {
         resource = CampResources.instance.GetResource(resourceType);
+        DayTimeManager.instance.OnDayEnd += OnDayEnd;
 
         InvokeRepeating("UpdateTick", Random.value, 1.0F);
     }
@@ -76,7 +78,70 @@ public class Workplace : MonoBehaviour
 
     private void UpdateResource()
     {
+        float effitiency = 0;
+
+        effitiency += gain * workers.Count / 2;
+
+        if (resourceType == ResourceType.Stone)
+        {
+            int tools = Mathf.Clamp(
+                (int)CampResources.instance.hammers.value,
+                0,
+                workers.Count);
+
+            effitiency += gain * tools / 2;
+            noTools = workers.Count - tools;
+        }
+        else if (resourceType == ResourceType.Wood)
+        {
+            int tools = Mathf.Clamp(
+                (int)CampResources.instance.axes.value,
+                0,
+                workers.Count);
+
+            effitiency += gain * tools / 2;
+            noTools = workers.Count - tools;
+        }
+        else if (resourceType == ResourceType.Metal)
+        {
+            int tools = Mathf.Clamp(
+                (int)CampResources.instance.picks.value,
+                0,
+                workers.Count);
+
+            effitiency += gain * tools / 2;
+            noTools = workers.Count - tools;
+        }
+        else // tool workshop: always full production
+        {
+            effitiency += gain * workers.Count / 2;
+        }
+
         resource.value += gain * workers.Count;
+    }
+
+    public void OnDayEnd()
+    {
+        for (int i = 0; i < noTools && i < workers.Count; ++i)
+            workers[i].WorkedWithNoTools();
+
+        int toolsDestroyed = (workers.Count - noTools) / 10;
+
+        if (resourceType == ResourceType.Stone)
+            CampResources.instance.hammers.value = Mathf.Clamp(
+                CampResources.instance.hammers.value - toolsDestroyed,
+                0,
+                1000);
+        else if (resourceType == ResourceType.Wood)
+            CampResources.instance.axes.value = Mathf.Clamp(
+                CampResources.instance.axes.value - toolsDestroyed,
+                0,
+                1000);
+        else if (resourceType == ResourceType.Metal)
+            CampResources.instance.picks.value = Mathf.Clamp(
+                CampResources.instance.picks.value - toolsDestroyed,
+                0,
+                1000);
     }
 
     public ActionData GetAction()

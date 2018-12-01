@@ -13,6 +13,9 @@ public class CampResources : MonoBehaviour
     public Resource metal = new Resource(ResourceType.Metal, 50, 0);
     public Resource stone = new Resource(ResourceType.Stone, 50, 0);
     public Resource wood = new Resource(ResourceType.Wood, 50, 0);
+    public Resource hammers = new Resource(ResourceType.hammer, 0, 0);
+    public Resource axes = new Resource(ResourceType.axe, 0, 0);
+    public Resource picks = new Resource(ResourceType.pick, 0, 0);
 
     public int numberOfPeople;
     public int numberOfGuards;
@@ -28,6 +31,9 @@ public class CampResources : MonoBehaviour
         Resources.Add(metal);
         Resources.Add(stone);
         Resources.Add(wood);
+        Resources.Add(hammers);
+        Resources.Add(axes);
+        Resources.Add(picks);
     }
 
     void Start()
@@ -39,6 +45,9 @@ public class CampResources : MonoBehaviour
     {
         foreach (Resource resource in Resources)
         {
+            if (resource.resourceText == null)
+                continue;
+
             resource.resourceText.text = resource.resourceType.ToString() + "\n" + resource.value.ToString();
         }
 
@@ -89,5 +98,6 @@ public class Resource
 
 public enum ResourceType
 {
-    Food, Morale, Metal, Wood, Stone
+    Food, Morale, Metal, Wood, Stone,
+    hammer, axe, pick
 }
