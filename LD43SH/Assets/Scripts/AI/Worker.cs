@@ -26,7 +26,7 @@ public class Worker : MonoBehaviour
     private void Start()
     {
         WorkerManager.WorkerNew(this);
-        food = Random.Range(0.9f, 1.1f);
+        food = Random.Range(0.75f, 1.25f);
         health = Random.Range(0.8f, 1.2f);
 
         InvokeRepeating("UpdateState", Random.Range(0.0f, 1.0f), 1.0f);
