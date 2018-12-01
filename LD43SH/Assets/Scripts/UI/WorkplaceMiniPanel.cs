@@ -20,8 +20,8 @@ public class WorkplaceMiniPanel : MiniPanel
     protected override void Update()
     {
         base.Update();
-        float greenValue = workplace.workers.Count - workplace.noTools;
-        float yellowValue = workplace.noTools;
+        float greenValue = workplace.workers.Count - workplace.workersWithoutTools;
+        float yellowValue = workplace.workersWithoutTools;
         float desiredValue = workplace.desiredWorkersCount;
 
         greenImage.fillAmount = greenValue / maxValue;
