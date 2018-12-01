@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class CampResources : MonoBehaviour
 {
@@ -43,6 +44,11 @@ public class CampResources : MonoBehaviour
 
         numberOfPeopleText.text = "Workers\n" + numberOfPeople.ToString();
         numberOfGuardsText.text = "Guards\n" + numberOfGuards.ToString();
+    }
+
+    public Resource GetResource(ResourceType resourceType)
+    {
+        return Resources.Single(resource => resource.resourceType == resourceType);
     }
 
     public void DailyUseOfResources()
