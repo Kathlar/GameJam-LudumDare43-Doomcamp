@@ -151,7 +151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4824008781098046}
-  - component: {fileID: 114979668492871452}
+  - component: {fileID: 114703343258951504}
   m_Layer: 0
   m_Name: Workplace
   m_TagString: Untagged
@@ -1209,6 +1209,32 @@ MonoBehaviour:
   animName: 
   time: 5
   place: {fileID: 4256356764305156}
+--- !u!114 &114703343258951504
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1682895777336896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06a3d2a7e251e764aa0625633a9496b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 114710914557093480}
+  - {fileID: 114421471427393254}
+  - {fileID: 114596405659166508}
+  - {fileID: 114586791973672350}
+  - {fileID: 114318825364947624}
+  - {fileID: 114794353664959848}
+  - {fileID: 114571671951307834}
+  - {fileID: 114065321978668322}
+  - {fileID: 114175054594931072}
+  - {fileID: 114093373033480068}
+  - {fileID: 114158249216329304}
+  resourceType: 0
+  desiredWorkersCount: 0
+  workers: []
 --- !u!114 &114710914557093480
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1237,27 +1263,3 @@ MonoBehaviour:
   animName: 
   time: 5
   place: {fileID: 4276710775491306}
---- !u!114 &114979668492871452
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682895777336896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40de71dbedd423e4194fcf0103fca681, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 114710914557093480}
-  - {fileID: 114421471427393254}
-  - {fileID: 114596405659166508}
-  - {fileID: 114586791973672350}
-  - {fileID: 114318825364947624}
-  - {fileID: 114794353664959848}
-  - {fileID: 114571671951307834}
-  - {fileID: 114065321978668322}
-  - {fileID: 114175054594931072}
-  - {fileID: 114093373033480068}
-  - {fileID: 114158249216329304}
-  workers: []

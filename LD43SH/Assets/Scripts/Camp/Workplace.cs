@@ -44,7 +44,7 @@ public class Workplace : MonoBehaviour
         {
             foreach (Worker worker in WorkerManager.workers)
             {
-                if (workers.Count < desiredWorkersCount)
+                if (workers.Count >= desiredWorkersCount)
                 {
                     break;
                 }
@@ -52,8 +52,7 @@ public class Workplace : MonoBehaviour
                 if (worker.workplace == null)
                 {
                     workers.Add(worker);
-
-                    worker.StartCoroutine(worker.Work(this));
+                    worker.StartWorking(this);
                 }
             }
         }
@@ -63,8 +62,7 @@ public class Workplace : MonoBehaviour
             {
                 Worker worker = workers[i];
 
-                worker.StartCoroutine(worker.IdleWalk());
-
+                worker.StartIdle();
                 workers.RemoveAt(i);
             }
         }

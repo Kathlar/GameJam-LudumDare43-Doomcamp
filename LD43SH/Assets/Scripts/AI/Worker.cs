@@ -87,7 +87,7 @@ public class Worker : MonoBehaviour
 
             // wait until agents updates his path
             yield return new WaitForSeconds(0.5f);
-            while (agent.remainingDistance > 1f)
+            while (agent.remainingDistance > 1.5f)
                 yield return new WaitForEndOfFrame();
             
             //animator.SetTrigger(data.animName);
