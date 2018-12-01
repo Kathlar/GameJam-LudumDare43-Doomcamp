@@ -27,27 +27,29 @@ public class CameraController : MonoBehaviour
         {
             screenWidth = Screen.width;
             screenHeight = Screen.height;
+
             if (Input.mousePosition.x > screenWidth - screenBound)
             {
                 newPosition.x += moveSpeed * Time.deltaTime;
             }
+
             if (Input.mousePosition.x < screenBound)
             {
                 newPosition.x -= moveSpeed * Time.deltaTime;
+
+                if (Input.mousePosition.y > screenHeight - screenBound)
+                {
+                    newPosition.z += moveSpeed * Time.deltaTime;
+                }
+
+                if (Input.mousePosition.y < screenBound)
+                {
+                    newPosition.z -= moveSpeed * Time.deltaTime;
+                }
             }
 
-            if (Input.mousePosition.y > screenHeight - screenBound)
-            {
-                newPosition.z += moveSpeed * Time.deltaTime;
-            }
-
-            if (Input.mousePosition.y < screenBound)
-            {
-                newPosition.z -= moveSpeed * Time.deltaTime;
-            }
+            transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
         }
-
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
     }
 
     void OnDrawGizmos()
