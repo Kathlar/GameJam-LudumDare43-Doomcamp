@@ -12,7 +12,7 @@ public class Workplace : MonoBehaviour
     public List<Worker> workers;
     [Range(0.0F, 100.0F)]
     public float gain = 1.0F;
-    private int noTools = 0;
+    public int noTools = 0;
 
     protected Resource resource;
     

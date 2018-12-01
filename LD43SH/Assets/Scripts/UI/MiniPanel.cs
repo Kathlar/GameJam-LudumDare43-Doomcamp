@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MiniPanel : MonoBehaviour
+public abstract class MiniPanel : MonoBehaviour
 {
     private Camera mainCamera;
-    public Transform objectPanel;
+    protected Transform objectPanel;
     public Image greenImage, yellowImage;
     public Slider slider;
+    public Text currentValueText;
 
-    void Start()
+    protected virtual void Start()
     {
         mainCamera = Camera.main;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if(objectPanel != null)
             transform.position = mainCamera.WorldToScreenPoint(objectPanel.position + objectPanel.up);
