@@ -12,7 +12,7 @@ public class Watchtower : MonoBehaviour
         if (cdCur > Time.time) return;
 
         Worker w = other.GetComponent<Worker>();
-        if (!w) return;
+        if (!w || w.canWork) return;
 
         cdCur = Time.time + cd;
         StartCoroutine(ShootEscapingDude(w));

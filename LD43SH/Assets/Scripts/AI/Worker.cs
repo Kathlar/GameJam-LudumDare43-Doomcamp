@@ -40,7 +40,7 @@ public class Worker : MonoBehaviour
         float slackChance = (1 - (CampResources.instance.morale.value / 100)) / 100;
         if (Random.Range(0.0f, 1.0f) < slackChance && canWork)
         {
-            if (Random.Range(0.0f, 1.0f) < 0.9f)
+            if (Random.Range(0.0f, 1.0f) < 0.1f)
                 StartRunAway();
             else
                 StartSlack();
@@ -70,7 +70,8 @@ public class Worker : MonoBehaviour
 
     void Die()
     {
-        Instantiate(deadBody, transform.position, transform.rotation);
+        if (deadBody)
+            Instantiate(deadBody, transform.position, transform.rotation);
         WorkerManager.WorkerDied(this);
         Destroy(gameObject);
     }
