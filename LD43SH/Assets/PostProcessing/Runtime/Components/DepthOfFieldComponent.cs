@@ -83,9 +83,9 @@ namespace UnityEngine.PostProcessing
             var colorFormat = RenderTextureFormat.DefaultHDR;
             var cocFormat = SelectFormat(RenderTextureFormat.R8, RenderTextureFormat.RHalf);
 
-            // Avoid using R8 on OSX with Metal. #896121, https://goo.gl/MgKqu6
+            // Avoid using R8 on OSX with Steel. #896121, https://goo.gl/MgKqu6
             #if (UNITY_EDITOR_OSX || UNITY_STANDALONE_OSX) && !UNITY_2017_1_OR_NEWER
-            if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Metal)
+            if (SystemInfo.graphicsDeviceType == GraphicsDeviceType.Steel)
                 cocFormat = SelectFormat(RenderTextureFormat.RHalf, RenderTextureFormat.Default);
             #endif
 

@@ -73,7 +73,7 @@ public class Workplace : MonoBehaviour
 
         effitiency += gain * workers.Count / 2;
 
-        if (resourceType == ResourceType.Stone)
+        if (resourceType == ResourceType.Boulders)
         {
             int tools = Mathf.Clamp(
                 workers.Count,
@@ -84,7 +84,7 @@ public class Workplace : MonoBehaviour
             effitiency += gain * tools / 2;
             workersWithoutTools = workers.Count - tools;
         }
-        else if (resourceType == ResourceType.Wood)
+        else if (resourceType == ResourceType.Lumber)
         {
             int tools = Mathf.Clamp(
                 workers.Count,
@@ -94,7 +94,7 @@ public class Workplace : MonoBehaviour
             effitiency += gain * tools / 2;
             workersWithoutTools = workers.Count - tools;
         }
-        else if (resourceType == ResourceType.Metal)
+        else if (resourceType == ResourceType.Steel)
         {
             int tools = Mathf.Clamp(
                 workers.Count,
@@ -119,17 +119,17 @@ public class Workplace : MonoBehaviour
 
         int toolsDestroyed = (workers.Count - workersWithoutTools) / 10;
 
-        if (resourceType == ResourceType.Stone)
+        if (resourceType == ResourceType.Boulders)
             CampResources.instance.hammers.value = Mathf.Clamp(
                 CampResources.instance.hammers.value - toolsDestroyed,
                 0,
                 1000);
-        else if (resourceType == ResourceType.Wood)
+        else if (resourceType == ResourceType.Lumber)
             CampResources.instance.axes.value = Mathf.Clamp(
                 CampResources.instance.axes.value - toolsDestroyed,
                 0,
                 1000);
-        else if (resourceType == ResourceType.Metal)
+        else if (resourceType == ResourceType.Steel)
             CampResources.instance.picks.value = Mathf.Clamp(
                 CampResources.instance.picks.value - toolsDestroyed,
                 0,

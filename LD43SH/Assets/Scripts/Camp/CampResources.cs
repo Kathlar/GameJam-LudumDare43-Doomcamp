@@ -10,12 +10,12 @@ public class CampResources : MonoBehaviour
     private List<Resource> Resources = new List<Resource>();
     public Resource food = new Resource(ResourceType.Food, 100, 10);
     public Resource morale = new Resource(ResourceType.Morale, 50, 0);
-    public Resource metal = new Resource(ResourceType.Metal, 50, 0);
-    public Resource stone = new Resource(ResourceType.Stone, 50, 0);
-    public Resource wood = new Resource(ResourceType.Wood, 50, 0);
-    public Resource hammers = new Resource(ResourceType.hammer, 0, 0);
-    public Resource axes = new Resource(ResourceType.axe, 0, 0);
-    public Resource picks = new Resource(ResourceType.pick, 0, 0);
+    public Resource metal = new Resource(ResourceType.Steel, 50, 0);
+    public Resource stone = new Resource(ResourceType.Boulders, 50, 0);
+    public Resource wood = new Resource(ResourceType.Lumber, 50, 0);
+    public Resource hammers = new Resource(ResourceType.Hammer, 0, 0);
+    public Resource axes = new Resource(ResourceType.Axe, 0, 0);
+    public Resource picks = new Resource(ResourceType.Pick, 0, 0);
 
     public int numberOfPeople;
     public int numberOfGuards;
@@ -125,6 +125,6 @@ public class Resource
 
 public enum ResourceType
 {
-    Food, Morale, Metal, Wood, Stone,
-    hammer, axe, pick
+    Food, Morale, Steel, Lumber, Boulders,
+    Hammer, Axe, Pick
 }
