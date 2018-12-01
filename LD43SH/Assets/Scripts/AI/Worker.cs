@@ -36,11 +36,11 @@ public class Worker : MonoBehaviour
     {
         // food, death (12 days to die with no food)
 
-        float reduction = (1 / 120);
+        float reduction = (1.0f / 120);
 
         if (CampResources.instance.food.value > 0)
         {
-            float taken = (1 / 120) * CampResources.instance.foodRationsRate;
+            float taken = (1.0f / 120) * CampResources.instance.foodRationsRate;
             reduction -= taken;
 
             CampResources.instance.food.value = Mathf.Clamp(

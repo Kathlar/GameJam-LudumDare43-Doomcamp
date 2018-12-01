@@ -499,7 +499,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayNumber: 1
-  dayLength: 35
+  dayLength: 45
+  globalLight: {fileID: 170076734}
 --- !u!1 &136459168
 GameObject:
   m_ObjectHideFlags: 0

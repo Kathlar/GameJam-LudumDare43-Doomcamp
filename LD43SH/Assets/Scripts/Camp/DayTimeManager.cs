@@ -10,6 +10,8 @@ public class DayTimeManager : MonoBehaviour
 
     public int dayNumber = 1;
     public float dayLength = 120;
+    public Light globalLight;
+    private float currentDayLength = 0;
 
     public static DayTimeManager instance;
     public Action OnDayEnd;
@@ -25,8 +27,15 @@ public class DayTimeManager : MonoBehaviour
         InvokeRepeating("ChangeDay", dayLength, dayLength);
     }
 
+    void Update()
+    {
+        currentDayLength += Time.deltaTime;
+        globalLight.intensity = Mathf.Clamp(currentDayLength / dayLength, .1f, 1f);
+    }
+
     public void ChangeDay()
     {
+        currentDayLength = 0;
         dayNumber++;
         campResources.DailyUseOfResources();
         if (OnDayEnd != null) OnDayEnd();

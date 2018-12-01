@@ -50,7 +50,7 @@ public class CampResources : MonoBehaviour
             if (resource.resourceText == null)
                 continue;
 
-            resource.resourceText.text = resource.resourceType.ToString() + "\n" + resource.value.ToString();
+            resource.resourceText.text = resource.resourceType.ToString() + "\n" + Mathf.Floor(resource.value).ToString();
         }
 
         numberOfPeopleText.text = "Workers\n" + numberOfPeople.ToString();
