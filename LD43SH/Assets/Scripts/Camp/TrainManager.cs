@@ -72,15 +72,3 @@ public class TrainManager : MonoBehaviour
         GUI.Label(new Rect(10, 40, 150, 100), "Days to next train: " + numberOfDaysToNextTrain.ToString());
     }
 }
-
-
-[CreateAssetMenu(menuName = "Train Scenario")]
-public class TrainScenario : ScriptableObject
-{
-    public float food;
-    public int numberOfPeople;
-    public int numberOfDaysToNextTrain = 10;
-    public float minimalWoodValue, minimalMetalValue, minimalStoneValue;
-    [TextArea]
-    public string comradeText;
-}
