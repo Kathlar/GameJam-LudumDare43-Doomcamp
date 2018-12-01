@@ -5,34 +5,41 @@ using UnityEngine.AI;
 
 public class Worker : MonoBehaviour
 {
-    float food = 1.0f;
+    float food;
     public GameObject deadBody;
     public Workplace workplace;
     
     NavMeshAgent agent;
     Animator animator;
+    
+    public bool canWork = true;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-
     }
 
     private void Start()
     {
         WorkerManager.WorkerNew(this);
+        food = Random.Range(0.9f, 1.1f);
         InvokeRepeating("UpdateState", Random.Range(0.0f, 1.0f), 1.0f);
     }
 
     void UpdateState()
     {
-        // food, morale, death etc
+        // food, death
         food = Mathf.MoveTowards(food, 0, 0.001f); // 1000 seconds for a dude to die
         if (food == 0)
         {
             Die();
         }
+
+        // slacking (when morale is 0, there is 1% chance of slack every second, morale 100 - no chance)
+        float slackChance = (1 - (CampResources.instance.morale.value / 100)) / 100;
+        if (Random.Range(0.0f, 1.0f) < slackChance && canWork)
+            StartSlack();
     }
 
     void Die()
@@ -45,30 +52,48 @@ public class Worker : MonoBehaviour
     #region commands
     public void StartWorking(Workplace workplace)
     {
+        canWork = true;
+        this.workplace = workplace;
         StopAllCoroutines();
         StartCoroutine(Work(workplace));
     }
 
     public void StartIdle()
     {
+        canWork = true;
+        if (workplace)
+            workplace.workers.Remove(this);
+        workplace = null;
         StopAllCoroutines();
         StartCoroutine(IdleWalk());
     }
 
     public void StartRunAway()
     {
+        canWork = false;
+        if (workplace)
+            workplace.workers.Remove(this);
+        workplace = null;
         StopAllCoroutines();
         StartCoroutine(RunAway());
     }
 
     public void StartSlack()
     {
+        canWork = false;
+        if (workplace)
+            workplace.workers.Remove(this);
+        workplace = null;
         StopAllCoroutines();
         StartCoroutine(Slack());
     }
 
     public void StartBunt()
     {
+        canWork = false;
+        if (workplace)
+            workplace.workers.Remove(this);
+        workplace = null;
         StopAllCoroutines();
         StartCoroutine(Bunt());
     }
@@ -78,7 +103,6 @@ public class Worker : MonoBehaviour
     
     IEnumerator Work(Workplace workplace)
     {
-        this.workplace = workplace;
         ActionData data;
         while(true)
         {
@@ -112,7 +136,17 @@ public class Worker : MonoBehaviour
 
     IEnumerator Slack()
     {
-        yield return null;
+        GetComponent<Renderer>().material.color = Color.black;
+        for (int i = 0; i < 6; ++i)
+        {
+            Vector3 gotoPos = transform.position + Random.insideUnitSphere * 5;
+            gotoPos.y = transform.position.y;
+
+            agent.SetDestination(gotoPos);
+            yield return new WaitForSeconds(5);
+        }
+        GetComponent<Renderer>().material.color = Color.blue;
+        StartIdle();
     }
 
     IEnumerator Bunt()

@@ -17,6 +17,13 @@ public class CampResources : MonoBehaviour
     public int numberOfGuards;
     public Text numberOfPeopleText, numberOfGuardsText;
 
+    public static CampResources instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         Resources.Add(food);
