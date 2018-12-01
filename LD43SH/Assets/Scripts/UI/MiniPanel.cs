@@ -9,9 +9,10 @@ public abstract class MiniPanel : MonoBehaviour
     protected Transform objectPanel;
     public Image greenImage, yellowImage;
     public Slider slider;
-    public Text currentValueText;
+    public Text currentValueText, maxValueText;
 
     public BigPanel bigPanel;
+    protected int maxValue;
 
     protected virtual void Start()
     {

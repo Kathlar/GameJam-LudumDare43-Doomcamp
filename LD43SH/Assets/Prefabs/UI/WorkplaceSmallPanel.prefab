@@ -413,6 +413,7 @@ MonoBehaviour:
   yellowImage: {fileID: 114014579311770602}
   slider: {fileID: 114119468418034720}
   currentValueText: {fileID: 114207643683569158}
+  maxValueText: {fileID: 114402906841577770}
   bigPanel: {fileID: 0}
   workplace: {fileID: 0}
 --- !u!114 &114345327126103190

@@ -802,6 +802,60 @@ Prefab:
       propertyPath: miniPanel
       value: 
       objectReference: {fileID: 1211246865}
+    - target: {fileID: 114962688572244114, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: workplace
+      value: 
+      objectReference: {fileID: 2054575831}
+    - target: {fileID: 114018544968887656, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 1532055318}
+    - target: {fileID: 114018544968887656, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_FillRect
+      value: 
+      objectReference: {fileID: 2067167785}
+    - target: {fileID: 114018544968887656, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_HandleRect
+      value: 
+      objectReference: {fileID: 1532055317}
+    - target: {fileID: 114018544968887656, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 342635987}
+    - target: {fileID: 114018544968887656, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetWorkers
+      objectReference: {fileID: 0}
+    - target: {fileID: 114578998571187528, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224818958406759066, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1167394372507638, guid: 69bffe27281f960449c61acc9c4e3f80, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224328855898335592, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114962688572244114, guid: 69bffe27281f960449c61acc9c4e3f80,
+        type: 2}
+      propertyPath: maxValueText
+      value: 
+      objectReference: {fileID: 1559343906}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69bffe27281f960449c61acc9c4e3f80, type: 2}
   m_IsPrefabAsset: 0
@@ -2070,6 +2124,11 @@ Prefab:
       propertyPath: resourceType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114703343258951504, guid: 773ce20c0e7fb9f479ea857ba69444dc,
+        type: 2}
+      propertyPath: maxWorkersCount
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773ce20c0e7fb9f479ea857ba69444dc, type: 2}
   m_IsPrefabAsset: 0
@@ -2589,6 +2648,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workplaces:
   - {fileID: 0}
+--- !u!224 &1532055317 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224818958406759066, guid: 69bffe27281f960449c61acc9c4e3f80,
+    type: 2}
+  m_PrefabInternal: {fileID: 342635985}
+--- !u!114 &1532055318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114105697079490836, guid: 69bffe27281f960449c61acc9c4e3f80,
+    type: 2}
+  m_PrefabInternal: {fileID: 342635985}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1547715176
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,6 +2803,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1556008065}
   m_CullTransparentMesh: 0
+--- !u!114 &1559343906 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114150380384348024, guid: 69bffe27281f960449c61acc9c4e3f80,
+    type: 2}
+  m_PrefabInternal: {fileID: 342635985}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1638589990
 Prefab:
   m_ObjectHideFlags: 0
@@ -3643,6 +3719,11 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1196694325}
   m_Script: {fileID: 11500000, guid: 06a3d2a7e251e764aa0625633a9496b1, type: 3}
+--- !u!224 &2067167785 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224328855898335592, guid: 69bffe27281f960449c61acc9c4e3f80,
+    type: 2}
+  m_PrefabInternal: {fileID: 342635985}
 --- !u!1 &2093442201
 GameObject:
   m_ObjectHideFlags: 0
