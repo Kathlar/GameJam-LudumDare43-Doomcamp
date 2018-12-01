@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b876267d7580e45a8a08f5e8523e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint: {fileID: 1999922107}
+  spawnPoint: {fileID: 0}
 --- !u!65 &49648738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &105078261 stripped
 RectTransform:
@@ -257,36 +257,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f11246d2d7f3bd4590957bf514d2692, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Resources: []
   food:
     resourceType: 0
     value: 100
     dailyUsage: 10
-    resourceText: {fileID: 0}
+    resourceText: {fileID: 1450054075}
   morale:
     resourceType: 1
     value: 50
     dailyUsage: 0
-    resourceText: {fileID: 0}
+    resourceText: {fileID: 913050132}
   metal:
     resourceType: 2
     value: 50
     dailyUsage: 0
-    resourceText: {fileID: 0}
+    resourceText: {fileID: 1638589992}
   stone:
     resourceType: 4
     value: 50
     dailyUsage: 0
-    resourceText: {fileID: 0}
+    resourceText: {fileID: 1022709882}
   wood:
     resourceType: 3
     value: 50
     dailyUsage: 0
-    resourceText: {fileID: 0}
+    resourceText: {fileID: 1750777889}
   numberOfPeople: 0
   numberOfGuards: 0
-  numberOfPeopleText: {fileID: 0}
-  numberOfGuardsText: {fileID: 0}
+  numberOfPeopleText: {fileID: 1856012066}
+  numberOfGuardsText: {fileID: 1429642185}
 --- !u!114 &126298797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayNumber: 1
-  dayLength: 0
+  dayLength: 30
 --- !u!1001 &143159032
 Prefab:
   m_ObjectHideFlags: 0
@@ -442,6 +441,7 @@ Transform:
   m_Children:
   - {fileID: 126298795}
   - {fileID: 1485998099}
+  - {fileID: 1934195358}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -596,120 +596,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 256150371}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &344466549
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 344466552}
-  - component: {fileID: 344466551}
-  - component: {fileID: 344466550}
-  - component: {fileID: 344466553}
-  - component: {fileID: 344466554}
-  m_Layer: 0
-  m_Name: Camp
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &344466550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 344466549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f11246d2d7f3bd4590957bf514d2692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Resources: []
-  food:
-    resourceType: 0
-    value: 100
-    dailyUsage: 10
-    resourceText: {fileID: 1450054075}
-  morale:
-    resourceType: 1
-    value: 50
-    dailyUsage: 0
-    resourceText: {fileID: 913050132}
-  metal:
-    resourceType: 2
-    value: 50
-    dailyUsage: 0
-    resourceText: {fileID: 1638589992}
-  stone:
-    resourceType: 4
-    value: 50
-    dailyUsage: 0
-    resourceText: {fileID: 1022709882}
-  wood:
-    resourceType: 3
-    value: 50
-    dailyUsage: 0
-    resourceText: {fileID: 1750777889}
-  numberOfPeople: 0
-  numberOfGuards: 0
-  numberOfPeopleText: {fileID: 1856012066}
-  numberOfGuardsText: {fileID: 1429642185}
---- !u!114 &344466551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 344466549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5091775d020891342a5d4815d341c70a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dayNumber: 1
-  dayLength: 30
---- !u!4 &344466552
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 344466549}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1999922107}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &344466553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 344466549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 012f330a574a87944951e0d037aec2ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  workplaces: []
---- !u!114 &344466554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 344466549}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb1bd009a3ed6d43b5952dfbbe0c159, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TrainScenarios:
-  - {fileID: 11400000, guid: aefa5677991856c4581aa9be313eab5e, type: 2}
-  - {fileID: 11400000, guid: ac277b768ede23b4b836cb2befae7ee8, type: 2}
-  train: {fileID: 49648737}
 --- !u!1 &462200419
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +725,7 @@ Transform:
   - {fileID: 256150372}
   - {fileID: 1829941012}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &534669902
 GameObject:
@@ -1062,7 +948,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826018098
 GameObject:
@@ -1177,7 +1063,7 @@ Transform:
   - {fileID: 170076735}
   - {fileID: 1711447302}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &913050130
 Prefab:
@@ -2288,36 +2174,52 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1999922106
+--- !u!1 &1934195357
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1999922107}
+  - component: {fileID: 1934195358}
+  - component: {fileID: 1934195359}
   m_Layer: 0
-  m_Name: TrainSpawnPoint
+  m_Name: Train
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1999922107
+--- !u!4 &1934195358
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1999922106}
+  m_GameObject: {fileID: 1934195357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 344466552}
-  m_RootOrder: 0
+  m_Father: {fileID: 154564000}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934195359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1934195357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cb1bd009a3ed6d43b5952dfbbe0c159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrainScenarios:
+  - {fileID: 11400000, guid: aefa5677991856c4581aa9be313eab5e, type: 2}
+  - {fileID: 11400000, guid: ac277b768ede23b4b836cb2befae7ee8, type: 2}
+  train: {fileID: 49648737}
 --- !u!1 &2005318998
 GameObject:
   m_ObjectHideFlags: 0
@@ -2475,7 +2377,7 @@ RectTransform:
   m_Children:
   - {fileID: 462200420}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

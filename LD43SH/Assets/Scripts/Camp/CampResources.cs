@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CampResources : MonoBehaviour
 {
-    public List<Resource> Resources = new List<Resource>();
+    private List<Resource> Resources = new List<Resource>();
     public Resource food = new Resource(ResourceType.Food, 100, 10);
     public Resource morale = new Resource(ResourceType.Morale, 50, 0);
     public Resource metal = new Resource(ResourceType.Metal, 50, 0);
