@@ -131,6 +131,7 @@ public class Worker : MonoBehaviour
 
     IEnumerator RunAway()
     {
+        animations.Escape();
         yield return null;
     }
 
