@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public abstract class MiniPanel : MonoBehaviour
 {
+    public static List<MiniPanel> miniPanels;
     private Camera mainCamera;
     protected Transform objectPanel;
     public Image greenImage, yellowImage;
@@ -14,11 +15,17 @@ public abstract class MiniPanel : MonoBehaviour
     public BigPanel bigPanel;
     protected int maxValue;
 
-    protected virtual void Start()
+    void Awake()
     {
         mainCamera = Camera.main;
+    }
+
+    protected virtual void Start()
+    {
         if(bigPanel != null)
             bigPanel.gameObject.SetActive(false);
+        if (miniPanels == null) miniPanels = new List<MiniPanel>();
+        if (!miniPanels.Contains(this)) miniPanels.Add(this);
     }
 
     protected virtual void Update()
@@ -38,5 +45,9 @@ public abstract class MiniPanel : MonoBehaviour
     {
         bigPanel.gameObject.SetActive(true);
         gameObject.SetActive(false);
+        foreach (MiniPanel miniPanel in miniPanels)
+        {
+            miniPanel.gameObject.SetActive(false);
+        }
     }
 }

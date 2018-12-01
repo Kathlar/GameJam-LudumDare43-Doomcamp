@@ -73,6 +73,7 @@ public class CampResources : MonoBehaviour
     {
         //numberOfGuards = ;
         numberOfPeople = WorkerManager.workers.Count;
+        numberOfGuards = Guard.guards.Count;
     }
 
     public bool TakeEverything(TrainScenario scenario)
