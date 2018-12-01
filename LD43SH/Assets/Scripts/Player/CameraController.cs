@@ -61,12 +61,12 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            newPosition.y = Mathf.Clamp(transform.position.y - 2 * moveSpeed * Time.deltaTime, minimalOffset,
+            newPosition.y = Mathf.Clamp(transform.position.y - 2 * moveSpeed * moveSpeed * Time.deltaTime * Time.deltaTime, minimalOffset,
                 maximalOffset);
         }
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
-            newPosition.y = Mathf.Clamp(transform.position.y + 2 * moveSpeed * Time.deltaTime, minimalOffset,
+            newPosition.y = Mathf.Clamp(transform.position.y + 2 * moveSpeed * moveSpeed * Time.deltaTime * Time.deltaTime, minimalOffset,
                 maximalOffset);
         }
 
