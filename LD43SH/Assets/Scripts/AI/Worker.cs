@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Worker : MonoBehaviour
 {
     float food;
+    float health = 1.0f;
     public Workplace workplace;
     
     NavMeshAgent agent;
@@ -23,6 +24,8 @@ public class Worker : MonoBehaviour
     {
         WorkerManager.WorkerNew(this);
         food = Random.Range(0.9f, 1.1f);
+        health = Random.Range(0.8f, 1.2f);
+
         InvokeRepeating("UpdateState", Random.Range(0.0f, 1.0f), 1.0f);
     }
 
@@ -45,6 +48,17 @@ public class Worker : MonoBehaviour
                 StartSlack();
 
         }
+
+        if (health == 0)
+        {
+            health = 1.0f; // przedsmiertna pasja
+            Invoke("DieWork", Random.Range(0.0f, 20.0f));
+        }
+    }
+
+    public void WorkedWithNoTools()
+    {
+        health = Mathf.Clamp(health - 0.1f, 0, 10);
     }
 
     public void DieCold()

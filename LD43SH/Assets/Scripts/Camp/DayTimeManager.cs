@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,8 +11,12 @@ public class DayTimeManager : MonoBehaviour
     public int dayNumber = 1;
     public float dayLength = 120;
 
+    public static DayTimeManager instance;
+    public Action OnDayEnd;
+
     void Awake()
     {
+        instance = this;
         campResources = GetComponent<CampResources>();
     }
 
@@ -24,6 +29,7 @@ public class DayTimeManager : MonoBehaviour
     {
         dayNumber++;
         campResources.DailyUseOfResources();
+        if (OnDayEnd != null) OnDayEnd();
         TrainManager.Instance.TrainSpawn();
     }
 

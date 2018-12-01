@@ -13,12 +13,16 @@ public class CampResources : MonoBehaviour
     public Resource metal = new Resource(ResourceType.Metal, 50, 0);
     public Resource stone = new Resource(ResourceType.Stone, 50, 0);
     public Resource wood = new Resource(ResourceType.Wood, 50, 0);
+    public Resource hammers = new Resource(ResourceType.hammer, 0, 0);
+    public Resource axes = new Resource(ResourceType.axe, 0, 0);
+    public Resource picks = new Resource(ResourceType.pick, 0, 0);
 
     public int numberOfPeople;
     public int numberOfGuards;
     public Text numberOfPeopleText, numberOfGuardsText;
 
     public static CampResources instance;
+    public static float lastMetalTaken, lastWoodTaken, lastStoneTaken;
 
     private void Awake()
     {
@@ -28,6 +32,9 @@ public class CampResources : MonoBehaviour
         Resources.Add(metal);
         Resources.Add(stone);
         Resources.Add(wood);
+        Resources.Add(hammers);
+        Resources.Add(axes);
+        Resources.Add(picks);
     }
 
     void Start()
@@ -39,6 +46,9 @@ public class CampResources : MonoBehaviour
     {
         foreach (Resource resource in Resources)
         {
+            if (resource.resourceText == null)
+                continue;
+
             resource.resourceText.text = resource.resourceType.ToString() + "\n" + resource.value.ToString();
         }
 
@@ -63,6 +73,28 @@ public class CampResources : MonoBehaviour
     {
         //numberOfGuards = ;
         numberOfPeople = WorkerManager.workers.Count;
+    }
+
+    public bool TakeEverything(TrainScenario scenario)
+    {
+        if (metal.value < scenario.minimalMetalValue || wood.value < scenario.minimalWoodValue ||
+            stone.value < scenario.minimalStoneValue)
+        {
+            return false;
+            //loose
+        }
+        else
+        {
+            lastMetalTaken = metal.value;
+            lastWoodTaken = wood.value;
+            lastStoneTaken = stone.value;
+
+            metal.value = 0;
+            wood.value = 0;
+            stone.value = 0;
+
+            return true;
+        }
     }
 }
 
@@ -89,5 +121,6 @@ public class Resource
 
 public enum ResourceType
 {
-    Food, Morale, Metal, Wood, Stone
+    Food, Morale, Metal, Wood, Stone,
+    hammer, axe, pick
 }
