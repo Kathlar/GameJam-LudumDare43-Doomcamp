@@ -30,7 +30,10 @@ public class DayTimeManager : MonoBehaviour
     void Update()
     {
         currentDayLength += Time.deltaTime;
-        globalLight.intensity = Mathf.Clamp(currentDayLength / dayLength, .1f, 1f);
+
+        float dayLightValue = 2 * (currentDayLength / dayLength);
+        if (dayLightValue > 1) dayLightValue = Mathf.Abs(2 - dayLightValue);
+        globalLight.intensity = Mathf.Clamp(dayLightValue, 0, 1);
     }
 
     public void ChangeDay()
