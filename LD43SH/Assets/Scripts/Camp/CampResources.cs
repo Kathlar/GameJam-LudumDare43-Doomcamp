@@ -80,8 +80,11 @@ public class CampResources : MonoBehaviour
         if (metal.value < scenario.minimalMetalValue || wood.value < scenario.minimalWoodValue ||
             stone.value < scenario.minimalStoneValue)
         {
-            return false;
+            metal.value = 0;
+            wood.value = 0;
+            stone.value = 0;
             //loose
+            return false;
         }
         else
         {
