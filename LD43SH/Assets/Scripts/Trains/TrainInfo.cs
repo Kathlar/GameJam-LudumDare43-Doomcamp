@@ -33,8 +33,8 @@ public class TrainInfo : MonoBehaviour
         Time.timeScale = 0;
         parentObj.SetActive(true);
 
-        takenText.text = "TAKEN:\nMetal: " + CampResources.lastMetalTaken + "\nWood: " + CampResources.lastWoodTaken +
-                         "\nStone:" + CampResources.lastStoneTaken;
+        takenText.text = "TAKEN:\nSteel: " + CampResources.lastMetalTaken + "\nLumber: " + CampResources.lastWoodTaken +
+                         "\nBoulders:" + CampResources.lastStoneTaken;
         givenText.text = "GIVEN:\nPeople: " + scenario.numberOfPeople + "\nFood: " + scenario.food;
 
         infoText.text = scenario.comradeText;

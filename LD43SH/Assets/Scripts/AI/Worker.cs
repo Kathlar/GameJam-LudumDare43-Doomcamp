@@ -15,6 +15,7 @@ public class Worker : MonoBehaviour
     public bool canWork = true;
 
     public WorkerState curState = WorkerState.idle;
+    public ActionData data;
 
     private void Awake()
     {
@@ -175,7 +176,6 @@ public class Worker : MonoBehaviour
     IEnumerator Work(Workplace workplace)
     {
         yield return null;
-        ActionData data;
         while(true)
         {
             data = workplace.GetAction();

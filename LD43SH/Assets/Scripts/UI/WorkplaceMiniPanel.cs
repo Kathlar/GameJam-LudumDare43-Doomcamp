@@ -14,12 +14,12 @@ public class WorkplaceMiniPanel : MiniPanel
         if (workplace == null) workplace = FindObjectOfType<Workplace>();
         objectPanel = workplace.transform;
         base.Start();
-
-        maxValue = workplace.maxWorkersCount;
+        namePanel.text = "Workplace (" + workplace.resourceType.ToString() + ")";
     }
 
     protected override void Update()
     {
+        maxValue = workplace.maxWorkersCount;
         base.Update();
         float greenValue = workplace.workers.Count - workplace.workersWithoutTools;
         float yellowValue = workplace.workersWithoutTools;

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
   food: 60
   numberOfPeople: 30
-  numberOfDaysToNextTrain: 30
-  minimalWoodValue: 100
+  numberOfDaysToNextTrain: 14
+  minimalWoodValue: 50
   minimalMetalValue: 0
   minimalStoneValue: 0
-  comradeText: Hello there, tank you for woud. Have some free dudes.
+  comradeText: Hello there, tank you for woud. Have some free dudes. next month 75
+    lumber and boulders

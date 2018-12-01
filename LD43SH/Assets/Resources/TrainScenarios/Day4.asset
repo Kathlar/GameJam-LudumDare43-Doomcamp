@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Name: Day4
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
   food: 0
-  numberOfPeople: 0
-  numberOfDaysToNextTrain: 10
-  minimalWoodValue: 0
+  numberOfPeople: -20
+  numberOfDaysToNextTrain: 14
+  minimalWoodValue: 50
   minimalMetalValue: 0
-  minimalStoneValue: 0
-  comradeText: 
+  minimalStoneValue: 50
+  comradeText: train 4 text

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
   food: 40
   numberOfPeople: 40
-  numberOfDaysToNextTrain: 30
+  numberOfDaysToNextTrain: 14
   minimalWoodValue: 0
   minimalMetalValue: 0
   minimalStoneValue: 0
   comradeText: Greetings, comrade. Here are som' peps and food. gl. Btw next month
-    gimme 100 lumber or gtfo.
+    gimme 50 lumber or gtfo.

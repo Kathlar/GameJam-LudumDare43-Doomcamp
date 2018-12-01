@@ -12,6 +12,7 @@ public class WorkplaceBigPanel : BigPanel
         if (workplace == null) workplace = FindObjectOfType<Workplace>();
 
         maxValue = workplace.maxWorkersCount;
+        transform.name = "Workplace (" + workplace.resourceType.ToString() + ")";
     }
 
     protected override void Update()
