@@ -49,7 +49,7 @@ public class Workplace : MonoBehaviour
                     break;
                 }
 
-                if (worker.workplace == null)
+                if (worker.workplace == null && worker.canWork)
                 {
                     workers.Add(worker);
                     worker.StartWorking(this);
