@@ -7,7 +7,7 @@ using System.Linq;
 
 public class CampResources : MonoBehaviour
 {
-    private List<Resource> Resources = new List<Resource>();
+    public List<Resource> Resources = new List<Resource>();
     public Resource food = new Resource(ResourceType.Food, 0, 0);
     public Resource morale = new Resource(ResourceType.Morale, 0, 0);
     public Resource metal = new Resource(ResourceType.Steel, 0, 0);
