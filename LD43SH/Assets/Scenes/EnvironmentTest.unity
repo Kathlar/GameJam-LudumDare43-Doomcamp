@@ -9972,7 +9972,7 @@ MonoBehaviour:
     resourceType: 0
     value: 0
     dailyUsage: 0
-    resourceText: {fileID: 1660198057}
+    resourceText: {fileID: 0}
   morale:
     resourceType: 1
     value: 100
@@ -16927,12 +16927,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1649625061}
   m_Mesh: {fileID: 4300014, guid: b6fdf95dddddc904eb67165da24d7521, type: 3}
---- !u!114 &1660198057 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114695408865794588, guid: e4b271087ee1a174da9321195ad2ab6f,
-    type: 2}
-  m_PrefabInternal: {fileID: 2127664749}
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1665026839
 GameObject:
   m_ObjectHideFlags: 0
