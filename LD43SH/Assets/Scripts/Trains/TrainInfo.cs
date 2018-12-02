@@ -55,7 +55,7 @@ public class TrainInfo : MonoBehaviour
         showing = false;
         Time.timeScale = 1;
         parentObj.SetActive(false);
-        FindObjectOfType<Train>().StartTrain();
+        //FindObjectOfType<Train>().StartTrain();
     }
 
     void OnCloseBtnClick()
