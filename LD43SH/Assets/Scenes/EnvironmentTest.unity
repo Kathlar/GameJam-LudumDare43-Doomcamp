@@ -9318,8 +9318,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayNumber: 1
-  dayLength: 20
-  globalLight: {fileID: 0}
+  dayLength: 30
+  globalLight: {fileID: 1225934881}
 --- !u!1001 &891115042
 Prefab:
   m_ObjectHideFlags: 0
