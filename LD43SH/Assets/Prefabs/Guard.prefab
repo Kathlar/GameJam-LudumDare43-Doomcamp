@@ -521,6 +521,7 @@ GameObject:
   - component: {fileID: 135017698874725544}
   - component: {fileID: 195729275679406924}
   - component: {fileID: 114399411698263052}
+  - component: {fileID: 114320261867456668}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -863,7 +864,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1756154654138000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.555298, y: 0.61, z: -2.7985535}
+  m_LocalPosition: {x: 0.98394775, y: 0.8388177, z: 2.329976}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4953112724754682}
@@ -1439,6 +1440,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114320261867456668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756154654138000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b9578a4c2149445837a9e415d01e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95133567695291528}
 --- !u!114 &114399411698263052
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,7 @@ public class Guard : MonoBehaviour
     public static List<Guard> guards = new List<Guard>();
     public Vector3 guardSpot;
     NavMeshAgent agent;
+    private CharacterAnimations animations;
 
     bool isPursuingASlacker;
     float cd = 10.0f;
@@ -16,6 +17,7 @@ public class Guard : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animations = GetComponent<CharacterAnimations>();
     }
 
     private void Start()
@@ -98,6 +100,7 @@ public class Guard : MonoBehaviour
                 break;
         }
 
+        animations.BeatUp();
         worker.StartGettingBeaten();
         agent.SetDestination(transform.position);
         // trigger some animation
@@ -132,6 +135,7 @@ public class Guard : MonoBehaviour
             isPursuingASlacker = false;
             yield break;
         }
+        animations.Shoot();
         worker.DieShot();
 
         CampResources.instance.morale.value += 10.0f;
