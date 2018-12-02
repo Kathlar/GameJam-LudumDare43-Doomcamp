@@ -1553,7 +1553,7 @@ Prefab:
         type: 2}
       propertyPath: workplace
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1502053111}
     - target: {fileID: 224869456402323890, guid: 6153396dec05e0345b4db6327fa8bf52,
         type: 2}
       propertyPath: m_AnchorMax.y
@@ -3680,7 +3680,7 @@ Prefab:
         type: 2}
       propertyPath: workplace
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1502053111}
     - target: {fileID: 224818958406759066, guid: 69bffe27281f960449c61acc9c4e3f80,
         type: 2}
       propertyPath: m_AnchorMax.y
@@ -6551,7 +6551,7 @@ Prefab:
         type: 2}
       propertyPath: workplace
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1381724846}
     - target: {fileID: 114018544968887656, guid: 69bffe27281f960449c61acc9c4e3f80,
         type: 2}
       propertyPath: m_TargetGraphic
@@ -13687,7 +13687,7 @@ Prefab:
         type: 2}
       propertyPath: workplace
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1381724846}
     - target: {fileID: 224869456402323890, guid: 6153396dec05e0345b4db6327fa8bf52,
         type: 2}
       propertyPath: m_AnchorMax.y

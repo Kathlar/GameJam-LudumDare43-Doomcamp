@@ -14,6 +14,7 @@ public class WorkplaceBigPanel : BigPanel
         maxValue = workplace.maxWorkersCount;
         transform.name = "Workplace (" + workplace.resourceType.ToString() + ")";
         GetComponent<WorkplaceUpgradeUI>().Init(workplace);
+        namePanel.text = transform.name;
     }
 
     protected override void Update()
