@@ -7,7 +7,7 @@ public class FireLight : MonoBehaviour
     public float amplitude = 1.0F;
     public float frequency = 10.0F;
 
-    protected Light light;
+    protected new Light light;
     protected float intensity;
     protected float seed;
 
