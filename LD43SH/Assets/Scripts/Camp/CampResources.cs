@@ -39,14 +39,10 @@ public class CampResources : MonoBehaviour
         Resources.Add(axes);
         Resources.Add(picks);
     }
-
-    void Start()
-    {
-        CountPeople();
-    }
-
+    
     void Update()
     {
+        SetFoodRations();
         foreach (Resource resource in Resources)
         {
             if (resource.resourceText == null)
@@ -55,7 +51,16 @@ public class CampResources : MonoBehaviour
             resource.resourceText.text = resource.resourceType.ToString() + "\n" + Mathf.Floor(resource.value).ToString();
         }
 
-        numberOfPeopleText.text = "Workers\n" + numberOfPeople.ToString();
+        CountPeople();
+
+        int workerCount = numberOfPeople;
+        int idleWorkerCount = 0;
+
+        foreach (Worker w in WorkerManager.workers)
+            if (!w.workplace)
+                ++idleWorkerCount;
+
+        numberOfPeopleText.text = "Workers\n" + idleWorkerCount + "/" + workerCount;
         numberOfGuardsText.text = "Guards\n" + numberOfGuards.ToString();
     }
 
@@ -79,7 +84,6 @@ public class CampResources : MonoBehaviour
 
     void CountPeople()
     {
-        //numberOfGuards = ;
         numberOfPeople = WorkerManager.workers.Count;
         numberOfGuards = Guard.guards.Count;
     }
