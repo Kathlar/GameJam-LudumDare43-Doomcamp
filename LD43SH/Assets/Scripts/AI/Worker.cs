@@ -76,8 +76,8 @@ public class Worker : MonoBehaviour
     public void WorkedWithNoTools()
     {
         CampResources.instance.morale.value = Mathf.Clamp(
-            CampResources.instance.morale.value - 0.01f, 0, 100);
-        health = Mathf.Clamp(health - 0.1f, 0, 10);
+            CampResources.instance.morale.value - 0.65f, 0, 100);
+        health = Mathf.Clamp(health - 0.25f, 0, 10);
     }
 
     public void DieCold()
@@ -109,14 +109,12 @@ public class Worker : MonoBehaviour
     }
 
     public void DieFreeze()
-    {
-        Die();
-        /*
+    {        
         animations.Unparent();
         WorkerManager.WorkerDied(this);
         freezer.Enable(0.0F);
         Destroy(gameObject);
-        */
+        
     }
 
     public void DieSilent()
