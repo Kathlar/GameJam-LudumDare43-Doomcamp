@@ -58,7 +58,7 @@ public class Worker : MonoBehaviour
         float slackChance = (1 - (CampResources.instance.morale.value / 100)) / 100;
         if (Random.Range(0.0f, 1.0f) < slackChance && canWork)
         {
-            if (Random.Range(0.0f, 1.0f) < 0.1f)
+            if (Random.Range(0.0f, 1.0f) < 0.25f)
                 StartRunAway();
             else
                 StartSlack();
@@ -222,7 +222,7 @@ public class Worker : MonoBehaviour
         agent.SetDestination(pt);
         agent.speed = 1;
 
-        while (transform.position.magnitude < 30)
+        while (transform.position.magnitude < 60)
         {
             yield return new WaitForSeconds(1);
         }

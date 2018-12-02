@@ -12,11 +12,15 @@ public class TrainInfo : MonoBehaviour
     public Text infoText;
     public Button closeBtn;
 
+    void Awake()
+    {
+        if (closeBtn)
+            closeBtn.onClick.AddListener(OnCloseBtnClick);
+    }
+
     void Start()
     {
         parentObj.SetActive(false);
-        if (closeBtn)
-            closeBtn.onClick.AddListener(OnCloseBtnClick);
     }
 
     void Update()
@@ -51,7 +55,7 @@ public class TrainInfo : MonoBehaviour
         showing = false;
         Time.timeScale = 1;
         parentObj.SetActive(false);
-        FindObjectOfType<Train>().StartTrain();
+        //FindObjectOfType<Train>().StartTrain();
     }
 
     void OnCloseBtnClick()

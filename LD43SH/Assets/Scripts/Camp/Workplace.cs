@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class Workplace : MonoBehaviour
 {
@@ -14,6 +15,11 @@ public class Workplace : MonoBehaviour
     public int maxWorkersCount = 100;
     [HideInInspector]
     public int workersWithoutTools = 0;
+
+    public List<List<ResRequirement>> upgradeRequirements;
+    public float gainPerUpgrade = 0.01f;
+    public int maxWorkerPerUpgrade = 2;
+    public int level = 0;
 
     protected Resource resource;
     
@@ -136,8 +142,63 @@ public class Workplace : MonoBehaviour
                 1000);
     }
 
+    public bool CanUpgrade(out string error)
+    {
+        if (level >= upgradeRequirements.Count)
+        {
+            error = "Max Level";
+            return false;
+        }
+
+        List<ResRequirement> requirements = upgradeRequirements[level];
+
+        foreach(ResRequirement rr in requirements)
+        {
+            Resource res = CampResources.instance.Resources
+                .Where(x => x.resourceType == rr.type)
+                .First();
+
+            if (res.value < rr.amount)
+            {
+                error = "not enough " + rr.type.ToString();
+                return false;
+            }
+        }
+
+        error = "";
+        return true;
+    }
+
+    public void Upgrade() // run CanUpgrade first
+    {
+        if (level >= upgradeRequirements.Count)
+            return;
+
+        List<ResRequirement> requirements = upgradeRequirements[level];
+
+        foreach (ResRequirement rr in requirements)
+        {
+            Resource res = CampResources.instance.Resources
+                .Where(x => x.resourceType == rr.type)
+                .First();
+
+            res.value -= rr.amount;
+        }
+
+        maxWorkersCount += maxWorkerPerUpgrade;
+        gain += gainPerUpgrade;
+        level += 1;
+    }
+
     public ActionData GetAction()
     {
         return actions[Random.Range(0, actions.Length - 1)];
     }
+}
+
+[System.Serializable]
+public struct ResRequirement
+{
+    public ResourceType type;
+    public float amount;
 }

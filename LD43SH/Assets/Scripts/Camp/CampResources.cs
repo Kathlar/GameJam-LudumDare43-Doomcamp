@@ -7,9 +7,9 @@ using System.Linq;
 
 public class CampResources : MonoBehaviour
 {
-    private List<Resource> Resources = new List<Resource>();
+    public List<Resource> Resources = new List<Resource>();
     public Resource food = new Resource(ResourceType.Food, 0, 0);
-    public Resource morale = new Resource(ResourceType.Morale, 0, 0);
+    public Resource morale = new Resource(ResourceType.Terror, 0, 0);
     public Resource metal = new Resource(ResourceType.Steel, 0, 0);
     public Resource stone = new Resource(ResourceType.Boulders, 0, 0);
     public Resource wood = new Resource(ResourceType.Lumber, 0, 0);
@@ -149,6 +149,6 @@ public class Resource
 
 public enum ResourceType
 {
-    Food, Morale, Steel, Lumber, Boulders,
+    Food, Terror, Steel, Lumber, Boulders,
     Hammer, Axe, Pick
 }

@@ -8,6 +8,7 @@ public class Guard : MonoBehaviour
     public static List<Guard> guards = new List<Guard>();
     public Vector3 guardSpot;
     NavMeshAgent agent;
+    private CharacterAnimations animations;
 
     bool isPursuingASlacker;
     float cd = 10.0f;
@@ -16,6 +17,19 @@ public class Guard : MonoBehaviour
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        animations = GetComponent<CharacterAnimations>();
+    }
+
+    private void Start()
+    {
+        Camera.main.transform.parent.parent.GetComponent<CameraController>()
+            .StartGuardLerp(transform.position);
+
+        if (guardSpot == Vector3.zero)
+            guardSpot = transform.position;
+
+        InvokeRepeating("WanderAroundGuardSpot", 0.0f, 10.0f);
+        InvokeRepeating("UpdateFoodConsumption", Random.Range(0.0f, 1.0f), 1.0f);
     }
 
     void OnEnable()
@@ -26,15 +40,6 @@ public class Guard : MonoBehaviour
     void OnDisable()
     {
         if (guards.Contains(this)) guards.Remove(this);
-    }
-
-    private void Start()
-    {
-        if (guardSpot == Vector3.zero)
-            guardSpot = transform.position;
-
-        InvokeRepeating("WanderAroundGuardSpot", 0.0f, 10.0f);
-        InvokeRepeating("UpdateFoodConsumption", Random.Range(0.0f, 1.0f), 1.0f);
     }
 
     private void OnTriggerStay(Collider other)
@@ -83,18 +88,25 @@ public class Guard : MonoBehaviour
 
         while(true) // chase worker
         {
+            if (worker == null)
+            {
+                isPursuingASlacker = false;
+                yield break;
+            }
+
             agent.SetDestination(worker.transform.position);
             yield return new WaitForSeconds(0.5f);
             if (Vector3.Distance(transform.position, worker.transform.position) < 1.5f)
                 break;
         }
 
+        animations.BeatUp();
         worker.StartGettingBeaten();
         agent.SetDestination(transform.position);
         // trigger some animation
 
         yield return new WaitForSeconds(5.5f);
-        CampResources.instance.morale.value += 1.0f;
+        CampResources.instance.morale.value += 2.0f;
         isPursuingASlacker = false;
     }
 
@@ -102,6 +114,12 @@ public class Guard : MonoBehaviour
     {
         while (true) // chase worker
         {
+            if (worker == null)
+            {
+                isPursuingASlacker = false;
+                yield break;
+            }
+
             agent.SetDestination(worker.transform.position);
             yield return new WaitForSeconds(0.5f);
             if (Vector3.Distance(transform.position, worker.transform.position) < 5.0f)
@@ -111,6 +129,13 @@ public class Guard : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
 
+
+        if (worker == null)
+        {
+            isPursuingASlacker = false;
+            yield break;
+        }
+        animations.Shoot();
         worker.DieShot();
 
         CampResources.instance.morale.value += 10.0f;
