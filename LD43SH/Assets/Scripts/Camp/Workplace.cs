@@ -16,7 +16,7 @@ public class Workplace : MonoBehaviour
     [HideInInspector]
     public int workersWithoutTools = 0;
 
-    public List<List<ResRequirement>> upgradeRequirements;
+    public List<DUPA> upgradeRequirements;
     public float gainPerUpgrade = 0.01f;
     public int maxWorkerPerUpgrade = 2;
     public int level = 0;
@@ -150,9 +150,9 @@ public class Workplace : MonoBehaviour
             return false;
         }
 
-        List<ResRequirement> requirements = upgradeRequirements[level];
+        DUPA requirements = upgradeRequirements[level];
 
-        foreach(ResRequirement rr in requirements)
+        foreach(ResRequirement rr in requirements.tab)
         {
             Resource res = CampResources.instance.Resources
                 .Where(x => x.resourceType == rr.type)
@@ -174,9 +174,9 @@ public class Workplace : MonoBehaviour
         if (level >= upgradeRequirements.Count)
             return;
 
-        List<ResRequirement> requirements = upgradeRequirements[level];
+        DUPA requirements = upgradeRequirements[level];
 
-        foreach (ResRequirement rr in requirements)
+        foreach (ResRequirement rr in requirements.tab)
         {
             Resource res = CampResources.instance.Resources
                 .Where(x => x.resourceType == rr.type)
@@ -194,6 +194,12 @@ public class Workplace : MonoBehaviour
     {
         return actions[Random.Range(0, actions.Length - 1)];
     }
+}
+
+[System.Serializable]
+public struct DUPA
+{
+    public List<ResRequirement> tab;
 }
 
 [System.Serializable]

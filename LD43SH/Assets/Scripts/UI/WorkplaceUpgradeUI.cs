@@ -36,6 +36,8 @@ public class WorkplaceUpgradeUI : MonoBehaviour
         error.gameObject.SetActive(!canUpgrade);
         btn.interactable = canUpgrade;
 
+        string cost = "";
+
         level.text = "Level: " + (workplace.level + 1).ToString();
 	}
 
