@@ -8,6 +8,7 @@ public class Worker : MonoBehaviour
     float food;
     float health = 1.0f;
     public Workplace workplace;
+    public Freezer freezer;
     
     NavMeshAgent agent;
     private CharacterAnimations animations;
@@ -83,21 +84,21 @@ public class Worker : MonoBehaviour
     {
         CampResources.instance.morale.value = Mathf.Clamp(
             CampResources.instance.morale.value - 2, 0, 100);
-        Die();
+        DieFreeze();
     }
 
     public void DieHunger()
     {
         CampResources.instance.morale.value = Mathf.Clamp(
             CampResources.instance.morale.value - 1, 0, 100);
-        Die();
+        DieFreeze();
     }
 
     public void DieWork()
     {
         CampResources.instance.morale.value = Mathf.Clamp(
             CampResources.instance.morale.value - 1, 0, 100);
-        Die();
+        DieFreeze();
     }
 
     public void DieShot()
@@ -105,6 +106,17 @@ public class Worker : MonoBehaviour
         CampResources.instance.morale.value = Mathf.Clamp(
             CampResources.instance.morale.value + 10, 0, 100);
         Die();
+    }
+
+    public void DieFreeze()
+    {
+        Die();
+        /*
+        animations.Unparent();
+        WorkerManager.WorkerDied(this);
+        freezer.Enable(0.0F);
+        Destroy(gameObject);
+        */
     }
 
     public void DieSilent()
@@ -117,6 +129,7 @@ public class Worker : MonoBehaviour
     {
         animations.Die();
         WorkerManager.WorkerDied(this);
+        freezer.Enable(2.0F);
         Destroy(gameObject);
     }
 

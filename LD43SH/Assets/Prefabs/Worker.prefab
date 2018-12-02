@@ -546,6 +546,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4358506400597532}
   - component: {fileID: 137159176799268794}
+  - component: {fileID: 114853725544801708}
   m_Layer: 0
   m_Name: Prisoner
   m_TagString: Untagged
@@ -947,7 +948,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1866112258698358}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.14, y: 0.75, z: 3.2}
+  m_LocalPosition: {x: 6.0584736, y: 0.75, z: 4.9622912}
   m_LocalScale: {x: 1, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4038818526225798}
@@ -1434,9 +1435,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workplace: {fileID: 0}
+  freezer: {fileID: 114853725544801708}
   canWork: 1
   curState: 1
   data: {fileID: 0}
+--- !u!114 &114853725544801708
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1727996138763128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e2457c99a9c9844a91f85a01c7bdf19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snowifingSpeed: 0.1
+  freezingSpeed: 0.5
+  isBurring: 1
+  burringSpeed: 0.01
+  destroyHeightTreshold: -3
+  animator: {fileID: 95398304751551024}
 --- !u!135 &135346603012946380
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1464,7 +1483,7 @@ SkinnedMeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 3553c19bab13ccb4f9d2f785a573d56a, type: 2}
+  - {fileID: 2100000, guid: 758de4445fd20a14b999b6cf06e28f4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
