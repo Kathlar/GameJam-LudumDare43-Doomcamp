@@ -21,12 +21,13 @@ GameObject:
   - component: {fileID: 4914134711328306}
   - component: {fileID: 33757666634414646}
   - component: {fileID: 23219265643395968}
+  - component: {fileID: 136247071541686294}
   m_Layer: 0
   m_Name: Brazier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1070171457418106
 GameObject:
@@ -43,7 +44,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1583526290042310
 GameObject:
@@ -82,8 +83,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583526290042310}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.28890356, y: 0.21338843, z: 0.89074427}
-  m_LocalScale: {x: 0.30484062, y: 0.30484077, z: 0.30484077}
+  m_LocalPosition: {x: 0.28890356, y: 0.311, z: 0.89074427}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4139454799894476}
   m_Father: {fileID: 4914134711328306}
@@ -156,7 +157,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.3548839, b: 0, a: 1}
   m_Intensity: 5
-  m_Range: 10
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -195,6 +196,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amplitude: 5
   frequency: 5
+--- !u!136 &136247071541686294
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1067922884412136}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.10618651
+  m_Height: 0.51
+  m_Direction: 1
+  m_Center: {x: 0.28141502, y: 0.1484455, z: 0.89936244}
 --- !u!198 &198417026969538232
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -849,7 +863,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.2
+      value: 0.0001
       mode: 0
       spread: 0
       speed:
