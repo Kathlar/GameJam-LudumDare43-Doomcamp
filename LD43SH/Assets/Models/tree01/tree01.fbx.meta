@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Box001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wire_088144225
+    second: {fileID: 2100000, guid: 0a057c79d88cea14abc3b2a9e008f1aa, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
