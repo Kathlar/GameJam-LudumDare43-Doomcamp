@@ -14,7 +14,7 @@ public class DayTimeManager : MonoBehaviour
     private float currentDayLength = 0;
 
     public static DayTimeManager instance;
-    public Action OnDayEnd;
+    public Action OnDayEnd; 
 
     void Awake()
     {

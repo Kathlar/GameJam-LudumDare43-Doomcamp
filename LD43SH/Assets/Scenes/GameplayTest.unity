@@ -113,6 +113,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: d250a213b4538fe4a9bda2a5a7cd065c, type: 2}
+--- !u!1 &15559081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1058714039223974, guid: 458b827050e02634b81e837bb479ff16,
+    type: 2}
+  m_PrefabInternal: {fileID: 1120286691}
+--- !u!114 &15559082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 15559081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 341f981d117643f489c1ff3795b94a96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1120286693}
 --- !u!1 &30451751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4943,6 +4960,16 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.33521718
       objectReference: {fileID: 0}
+    - target: {fileID: 114447769739045552, guid: 458b827050e02634b81e837bb479ff16,
+        type: 2}
+      propertyPath: m_Text
+      value: 0(-0)
+      objectReference: {fileID: 0}
+    - target: {fileID: 224351931423545964, guid: 458b827050e02634b81e837bb479ff16,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 458b827050e02634b81e837bb479ff16, type: 2}
   m_IsPrefabAsset: 0
@@ -5126,6 +5153,85 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1135364274}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1147070808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1954235193393958, guid: 458b827050e02634b81e837bb479ff16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1147070809}
+  - component: {fileID: 1147070811}
+  - component: {fileID: 1147070810}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1147070809
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 224351931423545964, guid: 458b827050e02634b81e837bb479ff16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147070808}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1120286692}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 6.1}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1147070810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114447769739045552, guid: 458b827050e02634b81e837bb479ff16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147070808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 11
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Food
+--- !u!222 &1147070811
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 222286533056485688, guid: 458b827050e02634b81e837bb479ff16,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1147070808}
+  m_CullTransparentMesh: 0
 --- !u!1 &1156661934
 GameObject:
   m_ObjectHideFlags: 0
@@ -7738,7 +7844,7 @@ MonoBehaviour:
     resourceType: 0
     value: 0
     dailyUsage: 0
-    resourceText: {fileID: 1120286693}
+    resourceText: {fileID: 0}
   morale:
     resourceType: 1
     value: 100
