@@ -53,7 +53,12 @@ public class CharacterAnimations : MonoBehaviour
 
     public void Die()
     {
-        animator.transform.SetParent(null);
+        Unparent();
         animator.SetBool("Dead", true);
+    }
+
+    public void Unparent()
+    {
+        animator.transform.SetParent(null);
     }
 }
