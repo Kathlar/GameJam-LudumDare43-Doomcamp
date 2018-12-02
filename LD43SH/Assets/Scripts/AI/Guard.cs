@@ -18,6 +18,18 @@ public class Guard : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
+    private void Start()
+    {
+        Camera.main.transform.parent.parent.GetComponent<CameraController>()
+            .StartGuardLerp(transform.position);
+
+        if (guardSpot == Vector3.zero)
+            guardSpot = transform.position;
+
+        InvokeRepeating("WanderAroundGuardSpot", 0.0f, 10.0f);
+        InvokeRepeating("UpdateFoodConsumption", Random.Range(0.0f, 1.0f), 1.0f);
+    }
+
     void OnEnable()
     {
         if (!guards.Contains(this)) guards.Add(this);
@@ -26,15 +38,6 @@ public class Guard : MonoBehaviour
     void OnDisable()
     {
         if (guards.Contains(this)) guards.Remove(this);
-    }
-
-    private void Start()
-    {
-        if (guardSpot == Vector3.zero)
-            guardSpot = transform.position;
-
-        InvokeRepeating("WanderAroundGuardSpot", 0.0f, 10.0f);
-        InvokeRepeating("UpdateFoodConsumption", Random.Range(0.0f, 1.0f), 1.0f);
     }
 
     private void OnTriggerStay(Collider other)

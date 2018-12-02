@@ -25,6 +25,10 @@ public class CameraController : MonoBehaviour
     protected Vector3 lastMousePosition;
     protected Vector3 mousePositionDelta;
 
+    Vector3 guardLerpStartPos;
+    Vector3 desiredGuardPos;
+    float guardLerpProgress = 1;
+
     void Start()
     {
         GameObject unzoomedTransformHelper = new GameObject("UnzoomedTransformHelper");
@@ -40,6 +44,17 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if (guardLerpProgress < 1)
+        {
+            guardLerpProgress = Mathf.Clamp(guardLerpProgress + Time.deltaTime, 0, 1);
+
+            float lerper = 
+                3 * guardLerpProgress * guardLerpProgress -
+                2 * guardLerpProgress * guardLerpProgress * guardLerpProgress;
+
+            transform.position = Vector3.Lerp(guardLerpStartPos, desiredGuardPos, lerper);
+            return;
+        }
         mousePositionDelta = lastMousePosition - Input.mousePosition;
 
         Vector3 newPosition = transform.position;
@@ -119,5 +134,12 @@ public class CameraController : MonoBehaviour
 
         cameraDolly.transform.position = Vector3.Lerp(cameraDolly.transform.position, zoomPosition, zoomFollowSpeed * Time.deltaTime);
         cameraDolly.transform.rotation = Quaternion.Slerp(cameraDolly.transform.rotation, zoomRotation, zoomFollowSpeed * Time.deltaTime);
+    }
+
+    public void StartGuardLerp(Vector3 position)
+    {
+        guardLerpStartPos = transform.position;
+        desiredGuardPos = position;
+        guardLerpProgress = 0;
     }
 }
