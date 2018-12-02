@@ -110,13 +110,10 @@ public class Worker : MonoBehaviour
 
     public void DieFreeze()
     {
-        Die();
-        /*
         animations.Unparent();
         WorkerManager.WorkerDied(this);
         freezer.Enable(0.0F);
         Destroy(gameObject);
-        */
     }
 
     public void DieSilent()

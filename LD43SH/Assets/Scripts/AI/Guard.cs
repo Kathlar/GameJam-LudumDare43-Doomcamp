@@ -125,7 +125,6 @@ public class Guard : MonoBehaviour
             if (Vector3.Distance(transform.position, worker.transform.position) < 5.0f)
                 break;
         }
-        //todo visual fluff
 
         yield return new WaitForSeconds(2.0f);
 
@@ -137,6 +136,7 @@ public class Guard : MonoBehaviour
         }
         animations.Shoot();
         worker.DieShot();
+        GetComponent<AudioSource>().Play();
 
         CampResources.instance.morale.value += 10.0f;
         isPursuingASlacker = false;
