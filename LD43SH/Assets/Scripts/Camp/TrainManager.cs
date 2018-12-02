@@ -15,13 +15,13 @@ public class TrainManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        resources = CampResources.instance;
         train = FindObjectOfType<Train>();
         train.manager = this;
     }
 
     void Start()
     {
+        resources = CampResources.instance;
         numberOfDaysToNextTrain = 1;
         TrainSpawn();
     }
@@ -39,8 +39,7 @@ public class TrainManager : MonoBehaviour
         TrainScenario scenario = TrainScenarios[0];
         resources.food.value += scenario.food;
 
-        CampResources.instance.morale.value = Mathf.Clamp(
-            CampResources.instance.morale.value + 30.0f, 0, 100);
+        CampResources.instance.morale.value = 100;
 
         string failComment = "";
         bool gotEnoughResources = resources.TakeEverything(scenario, out failComment);

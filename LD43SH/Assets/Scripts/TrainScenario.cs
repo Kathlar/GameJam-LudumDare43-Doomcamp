@@ -11,4 +11,7 @@ public class TrainScenario : ScriptableObject
     public float minimalWoodValue, minimalMetalValue, minimalStoneValue;
     [TextArea]
     public string comradeText;
+
+
+
 }

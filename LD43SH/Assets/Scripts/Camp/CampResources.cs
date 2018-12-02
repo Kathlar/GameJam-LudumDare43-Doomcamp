@@ -8,11 +8,11 @@ using System.Linq;
 public class CampResources : MonoBehaviour
 {
     private List<Resource> Resources = new List<Resource>();
-    public Resource food = new Resource(ResourceType.Food, 100, 10);
-    public Resource morale = new Resource(ResourceType.Morale, 50, 0);
-    public Resource metal = new Resource(ResourceType.Steel, 50, 0);
-    public Resource stone = new Resource(ResourceType.Boulders, 50, 0);
-    public Resource wood = new Resource(ResourceType.Lumber, 50, 0);
+    public Resource food = new Resource(ResourceType.Food, 0, 0);
+    public Resource morale = new Resource(ResourceType.Morale, 0, 0);
+    public Resource metal = new Resource(ResourceType.Steel, 0, 0);
+    public Resource stone = new Resource(ResourceType.Boulders, 0, 0);
+    public Resource wood = new Resource(ResourceType.Lumber, 0, 0);
     public Resource hammers = new Resource(ResourceType.Hammer, 0, 0);
     public Resource axes = new Resource(ResourceType.Axe, 0, 0);
     public Resource picks = new Resource(ResourceType.Pick, 0, 0);
