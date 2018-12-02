@@ -36,6 +36,16 @@ public class WorkplaceUpgradeUI : MonoBehaviour
         error.gameObject.SetActive(!canUpgrade);
         btn.interactable = canUpgrade;
 
+        string costText = "";
+
+        DUPA requirements =  workplace.upgradeRequirements[workplace.level];
+        foreach (ResRequirement rr in requirements.tab)
+        {
+            costText += rr.type.ToString() + ": ";
+            costText += (int)rr.amount + "  ";
+        }
+        cost.text = costText;
+
         level.text = "Level: " + (workplace.level + 1).ToString();
 	}
 

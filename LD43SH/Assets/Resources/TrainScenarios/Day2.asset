@@ -17,4 +17,5 @@ MonoBehaviour:
   minimalWoodValue: 50
   minimalMetalValue: 0
   minimalStoneValue: 0
-  comradeText: Train 2
+  comradeText: Good job, commrade. You collected the needed lumber. We will need more,
+    as well as some boulders next time.
