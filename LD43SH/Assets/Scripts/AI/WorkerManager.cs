@@ -36,6 +36,9 @@ public class WorkerManager : MonoBehaviour
         if (!workers.Contains(worker))
             workers.Add(worker);
 
-        worker.transform.parent = instance.transform;
+        if (instance != null)
+        {
+            worker.transform.parent = instance.transform;
+        }
     }
 }
