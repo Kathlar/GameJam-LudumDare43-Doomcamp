@@ -22,8 +22,8 @@ public class Train : MonoBehaviour
 
     void Update()
     {
-        distance = Vector3.Distance(transform.position, stopper.transform.position);
-        spline.Speed = startSplineSpeed * Mathf.Clamp(distance / 30, 0, 1);
+        distance = Vector3.Distance(transform.position, stopper.transform.position - Vector3.right * 4);
+        spline.Speed = startSplineSpeed * Mathf.Clamp((distance + 5) / 30, 0, 1);
     }
 
     public void SpawnTrain()
@@ -34,14 +34,14 @@ public class Train : MonoBehaviour
 
     public void StopTrain()
     {
-        if (lastTrainTime + 5 > Time.time) //quick fix a weird bug
+        if (lastTrainTime + 10 > Time.time) //quick fix a weird bug
             return;
         lastTrainTime = Time.time;
 
         spline.IsRunning = false;
         workerSpawner.SpawnWorkers(manager.TrainScenarios[0].numberOfPeople);
         manager.TrainArrive();
-        Invoke("StartTrain", 10);
+        Invoke("StartTrain", 5);
     }
 
     public void StartTrain()
