@@ -30,7 +30,10 @@ public class TrainInfo : MonoBehaviour
     public void ShowTrainInfo(TrainScenario scenario, bool gotEnoughResourcess)
     {
         if (!gotEnoughResourcess)
+        {
+            Time.timeScale = 1;
             SceneManager.LoadScene(0);
+        }
 
         showing = true;
         Time.timeScale = 0;

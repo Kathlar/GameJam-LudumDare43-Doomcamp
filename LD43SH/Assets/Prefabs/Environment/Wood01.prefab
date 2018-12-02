@@ -156,6 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4533085950919358}
   - component: {fileID: 65230627516011648}
+  - component: {fileID: 114193704069093568}
   m_Layer: 0
   m_Name: Wood01
   m_TagString: Untagged
@@ -255,8 +256,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833411703969092}
-  m_LocalRotation: {x: -0.013225604, y: -0.66665894, z: 0.014781741, w: 0.7450989}
-  m_LocalPosition: {x: 23.72, y: 0.25, z: -24}
+  m_LocalRotation: {x: -0, y: -0.5952096, z: -0, w: 0.8035705}
+  m_LocalPosition: {x: 21.76, y: 0.34999996, z: -22.85}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4995013827719560}
@@ -271,7 +272,7 @@ Transform:
   - {fileID: 4104668973279066}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -83.64001, z: 2.273}
+  m_LocalEulerAnglesHint: {x: 0, y: -73.055, z: 2.273}
 --- !u!4 &4586845205790810
 Transform:
   m_ObjectHideFlags: 1
@@ -782,3 +783,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.51, y: 0.3, z: 0.36}
   m_Center: {x: 0, y: 0.09, z: -0.09}
+--- !u!114 &114193704069093568
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1833411703969092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8123fe8ba05ac7a408673f03f5f30915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animName: 
+  time: 5
+  place: {fileID: 4738207022538430}

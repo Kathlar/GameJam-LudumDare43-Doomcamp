@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Workplace : MonoBehaviour
 {
-    [SerializeField]
     public ActionData[] actions;
     public ResourceType resourceType;
     [Range(0, 100)]
@@ -21,6 +20,7 @@ public class Workplace : MonoBehaviour
     private void Start()
     {
         resource = CampResources.instance.GetResource(resourceType);
+        actions = GetComponentsInChildren<ActionData>();
         DayTimeManager.instance.OnDayEnd += OnDayEnd;
 
         InvokeRepeating("UpdateWorkersCount", Random.value, 0.5F);

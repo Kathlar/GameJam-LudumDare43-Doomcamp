@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccc5a3754a80ef42b8f535f9a6dbc45, type: 3}
   m_Name: Day1
   m_EditorClassIdentifier: 
-  food: 30
+  food: 20
   numberOfPeople: 20
   numberOfDaysToNextTrain: 7
   minimalWoodValue: 0

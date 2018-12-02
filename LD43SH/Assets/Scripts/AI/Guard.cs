@@ -71,7 +71,7 @@ public class Guard : MonoBehaviour
     {
         if (isPursuingASlacker) return;
 
-        Vector3 pt = transform.position + Random.insideUnitSphere * 3;
+        Vector3 pt = guardSpot + Random.insideUnitSphere * 3;
         pt.y = transform.position.y;
 
         agent.SetDestination(pt);

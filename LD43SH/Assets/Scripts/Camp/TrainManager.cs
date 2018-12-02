@@ -52,10 +52,14 @@ public class TrainManager : MonoBehaviour
             }
             else
             {
+                int peopleTaken = 0;
                 for (int i = WorkerManager.workers.Count - 1; i >= 0; --i)
                 {
                     Worker w = WorkerManager.workers[i];
                     w.DieSilent();
+                    peopleTaken++;
+                    if (peopleTaken >= -scenario.numberOfPeople)
+                        break;
                 }
             }
         }
