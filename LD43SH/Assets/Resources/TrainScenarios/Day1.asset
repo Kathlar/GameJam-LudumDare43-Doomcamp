@@ -17,4 +17,6 @@ MonoBehaviour:
   minimalWoodValue: 0
   minimalMetalValue: 0
   minimalStoneValue: 0
-  comradeText: Train 1
+  comradeText: Greetings, commrade. Here are some new workers for you and some food.
+    We will need lumber next time, so make sure to get some for us. We don't want
+    to make governor angry, do we?

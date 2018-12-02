@@ -17,4 +17,5 @@ MonoBehaviour:
   minimalWoodValue: 100
   minimalMetalValue: 0
   minimalStoneValue: 100
-  comradeText: Train 4
+  comradeText: Great job collecting the lumber and stones. Now, we need some steel.
+    Be sure to make enough, to make Governor happy.
