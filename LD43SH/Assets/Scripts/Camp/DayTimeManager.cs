@@ -29,6 +29,11 @@ public class DayTimeManager : MonoBehaviour
 
     void Update()
     {
+        float moraleLoss = 7 * Time.deltaTime / dayLength;
+        campResources.morale.value = Mathf.Clamp(
+            campResources.morale.value - moraleLoss,
+            0, 100);
+
         currentDayLength += Time.deltaTime;
 
         float dayLightValue = 2 * (currentDayLength / dayLength);

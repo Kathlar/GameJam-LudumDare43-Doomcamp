@@ -35,6 +35,7 @@ public class Guard : MonoBehaviour
             guardSpot = transform.position;
 
         InvokeRepeating("WanderAroundGuardSpot", 0.0f, 10.0f);
+        InvokeRepeating("UpdateFoodConsumption", Random.Range(0.0f, 1.0f), 1.0f);
     }
 
     private void OnTriggerStay(Collider other)
@@ -51,6 +52,20 @@ public class Guard : MonoBehaviour
             StartCoroutine(ShootEscapingDude(w));
         else
             StartCoroutine(StartPacifyingADude(w));
+    }
+
+
+    public void GoToSpot(Vector3 spot)
+    {
+        guardSpot = spot;
+        agent.SetDestination(guardSpot);
+    }
+
+    void UpdateFoodConsumption()
+    {
+        float taken = (1.0f / 120) * 3;
+        CampResources.instance.food.value = Mathf.Clamp(
+            CampResources.instance.food.value - taken, 0, 1000);
     }
 
     void WanderAroundGuardSpot()
