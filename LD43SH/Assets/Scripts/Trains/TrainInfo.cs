@@ -10,10 +10,13 @@ public class TrainInfo : MonoBehaviour
     public GameObject parentObj;
     public Text takenText, givenText;
     public Text infoText;
+    public Button closeBtn;
 
     void Start()
     {
         parentObj.SetActive(false);
+        if (closeBtn)
+            closeBtn.onClick.AddListener(OnCloseBtnClick);
     }
 
     void Update()
@@ -46,5 +49,10 @@ public class TrainInfo : MonoBehaviour
         Time.timeScale = 1;
         parentObj.SetActive(false);
         FindObjectOfType<Train>().StartTrain();
+    }
+
+    void OnCloseBtnClick()
+    {
+        HideTrainInfo();
     }
 }

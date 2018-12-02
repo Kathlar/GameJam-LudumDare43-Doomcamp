@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Guard : MonoBehaviour
 {
-    public static List<Guard> guards;
+    public static List<Guard> guards = new List<Guard>();
     public Vector3 guardSpot;
     NavMeshAgent agent;
 
@@ -20,7 +20,6 @@ public class Guard : MonoBehaviour
 
     void OnEnable()
     {
-        if (guards == null) guards = new List<Guard>();
         if (!guards.Contains(this)) guards.Add(this);
     }
 
