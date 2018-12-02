@@ -83,6 +83,12 @@ public class Guard : MonoBehaviour
 
         while(true) // chase worker
         {
+            if (worker == null)
+            {
+                isPursuingASlacker = false;
+                yield break;
+            }
+
             agent.SetDestination(worker.transform.position);
             yield return new WaitForSeconds(0.5f);
             if (Vector3.Distance(transform.position, worker.transform.position) < 1.5f)
@@ -94,7 +100,7 @@ public class Guard : MonoBehaviour
         // trigger some animation
 
         yield return new WaitForSeconds(5.5f);
-        CampResources.instance.morale.value += 1.0f;
+        CampResources.instance.morale.value += 2.0f;
         isPursuingASlacker = false;
     }
 
@@ -102,6 +108,12 @@ public class Guard : MonoBehaviour
     {
         while (true) // chase worker
         {
+            if (worker == null)
+            {
+                isPursuingASlacker = false;
+                yield break;
+            }
+
             agent.SetDestination(worker.transform.position);
             yield return new WaitForSeconds(0.5f);
             if (Vector3.Distance(transform.position, worker.transform.position) < 5.0f)
@@ -111,6 +123,12 @@ public class Guard : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
 
+
+        if (worker == null)
+        {
+            isPursuingASlacker = false;
+            yield break;
+        }
         worker.DieShot();
 
         CampResources.instance.morale.value += 10.0f;
