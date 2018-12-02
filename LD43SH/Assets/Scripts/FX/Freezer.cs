@@ -12,7 +12,7 @@ public class Freezer : MonoBehaviour
     public Animator animator;
 
     protected bool isEnabled = false;
-    protected Renderer renderer;
+    protected new Renderer renderer;
     protected float timeElapsed = 0.0F;
     protected float timeOffset = 0.0F;
 

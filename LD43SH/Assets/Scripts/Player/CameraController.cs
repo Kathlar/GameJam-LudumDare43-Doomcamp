@@ -4,72 +4,120 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float moveSpeed = 20;
-
-    public float minimalX = -50, maximalX = 50;
-    public float minimalZ = -50, maximalZ = 50;
-
+    public float moveSpeed = 40.0F;
+    public float moveFollowSpeed = 20.0F;
+    public float moveMouseSensitivity = 0.2F;
+    public float rotationSpeed = 10.0F;
+    public float rotationFollowSpeed = 20.0F;
     public bool moveWithMouse = true;
-    private int screenWidth, screenHeight;
-    public int screenBound = 50;
+    public float maxDistance = 100.0F;
+    // public int screenBound = 50.0F;
+    public float zoomSpeed = 1.0F;
+    public float zoomFollowSpeed = 1.0F;
+    public Transform zoomedTransform;
+    public Transform cameraDolly;
 
-    private float currentOffset;
-    public float minimalOffset, maximalOffset;
+    protected Transform unzoomedTransform;
+    //protected int screenWidth;
+    //protected int screenHeight;
+    protected float zoomValue = 1.0F;
+    protected float rotationValue = 0.0F;
+    protected Vector3 lastMousePosition;
+    protected Vector3 mousePositionDelta;
 
     void Start()
     {
-        currentOffset = transform.position.y;
-        minimalOffset = currentOffset * .7f;
-        maximalOffset = currentOffset * 1.6f;
+        GameObject unzoomedTransformHelper = new GameObject("UnzoomedTransformHelper");
+
+        unzoomedTransform = unzoomedTransformHelper.transform;
+
+        unzoomedTransform.transform.position = cameraDolly.transform.position;
+        unzoomedTransform.transform.rotation = cameraDolly.transform.rotation;
+        unzoomedTransform.transform.parent = cameraDolly.transform.parent;
+
+        lastMousePosition = Input.mousePosition;
     }
 
-    void Update()
+    private void Update()
     {
-        //Move with keys
+        mousePositionDelta = lastMousePosition - Input.mousePosition;
+
         Vector3 newPosition = transform.position;
-        float xMove = Input.GetAxis("Horizontal");
-        float zMove = Input.GetAxis("Vertical");
-        newPosition.x = Mathf.Clamp(newPosition.x + xMove * moveSpeed * Time.deltaTime, minimalX, maximalX);
-        newPosition.z = Mathf.Clamp(newPosition.z + zMove * moveSpeed * Time.deltaTime, minimalZ, maximalZ);
 
-        //Move with mouse
-        if (moveWithMouse)
+        if (Input.GetMouseButton(1))
         {
-            screenWidth = Screen.width;
-            screenHeight = Screen.height;
-
-            if (Input.mousePosition.x > screenWidth - screenBound)
-            {
-                newPosition.x += moveSpeed * Time.deltaTime;
-            }
-
-            if (Input.mousePosition.x < screenBound)
-            {
-                newPosition.x -= moveSpeed * Time.deltaTime;
-            }
-
-            if (Input.mousePosition.y > screenHeight - screenBound)
-            {
-                newPosition.z += moveSpeed * Time.deltaTime;
-            }
-
-            if (Input.mousePosition.y < screenBound)
-            {
-                newPosition.z -= moveSpeed * Time.deltaTime;
-            }
+            newPosition = DragWithMouse(newPosition);
+        }
+        else if (Input.GetMouseButton(2))
+        {
+            RotateWithMouse();
+        }
+        else
+        {
+            newPosition = DragWithKeys(newPosition);
         }
 
-        newPosition.y = Mathf.Clamp(newPosition.y - Input.GetAxis("Mouse ScrollWheel") * moveSpeed, minimalOffset, maximalOffset);
+        if (newPosition.sqrMagnitude > maxDistance * maxDistance)
+        {
+            newPosition = newPosition.normalized * maxDistance;
+        }
 
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveSpeed);
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveFollowSpeed);
+
+        UpdateZoom();
+
+        lastMousePosition = Input.mousePosition;
     }
 
-    void OnDrawGizmos()
+    protected Vector3 DragWithMouse(Vector3 newPosition)
     {
-        Gizmos.color = Color.gray;
-        Gizmos.DrawWireCube(new Vector3(minimalX + maximalX, transform.position.y, minimalZ + maximalZ), new Vector3(-minimalX + maximalX, .1f, -minimalZ + maximalZ));
+        Vector3 delta = new Vector3();
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, .5f);
+        delta.x = mousePositionDelta.x * moveSpeed * moveMouseSensitivity * Time.deltaTime;
+        delta.z = mousePositionDelta.y * moveSpeed * moveMouseSensitivity * Time.deltaTime;
+
+        delta = transform.localToWorldMatrix * delta;
+
+        newPosition += delta;
+
+        return newPosition;
+    }
+
+    protected Vector3 DragWithKeys(Vector3 newPosition)
+    {
+        Vector3 delta = new Vector3();
+
+        delta.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        delta.z = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+
+        delta = transform.localToWorldMatrix * delta;
+
+        newPosition += delta;
+
+        return newPosition;
+    }
+
+    protected void RotateWithMouse()
+    {
+        rotationValue += mousePositionDelta.x * Time.deltaTime * rotationSpeed;
+
+        Vector3 orientation = transform.eulerAngles;
+
+        orientation.y = Mathf.LerpAngle(orientation.y, rotationValue, Time.deltaTime * rotationFollowSpeed);
+
+        transform.eulerAngles = orientation;
+    }
+
+    protected void UpdateZoom()
+    {
+        Vector3 zoomPosition = cameraDolly.transform.localPosition;
+        Quaternion zoomRotation = cameraDolly.transform.rotation;
+
+        zoomValue = Mathf.Clamp01(zoomValue + Input.GetAxis("Mouse ScrollWheel") * -zoomSpeed * Time.deltaTime);
+        zoomPosition = Vector3.Lerp(zoomedTransform.position, unzoomedTransform.position, zoomValue);
+        zoomRotation = Quaternion.Slerp(zoomedTransform.rotation, unzoomedTransform.rotation, zoomValue);
+
+        cameraDolly.transform.position = Vector3.Lerp(cameraDolly.transform.position, zoomPosition, zoomFollowSpeed * Time.deltaTime);
+        cameraDolly.transform.rotation = Quaternion.Slerp(cameraDolly.transform.rotation, zoomRotation, zoomFollowSpeed * Time.deltaTime);
     }
 }
