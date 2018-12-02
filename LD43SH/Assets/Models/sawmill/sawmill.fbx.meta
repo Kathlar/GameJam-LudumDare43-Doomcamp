@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1f3da043a0fc2f940b65c5f43e1f191a
+guid: dbec9facd3a7b6248aed43ddee73280d
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,13 +8,8 @@ ModelImporter:
     2100000: wire_088144225
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Box001
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: wire_088144225
-    second: {fileID: 2100000, guid: 0a057c79d88cea14abc3b2a9e008f1aa, type: 2}
+    4300000: Box010
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
