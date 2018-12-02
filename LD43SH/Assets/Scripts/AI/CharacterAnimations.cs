@@ -64,11 +64,23 @@ public class CharacterAnimations : MonoBehaviour
 
     public void BeatUp()
     {
+        animator.SetBool("Beat", true);
+        Invoke("StopBeatUp", 1f);
+    }
 
+    protected void StopBeatUp()
+    {
+        animator.SetBool("Beat", false);
     }
 
     public void Shoot()
     {
+        animator.SetBool("Shoot", true);
+        Invoke("StopShoot", 3f);
+    }
 
+    protected void StopShoot()
+    {
+        animator.SetBool("Shoot", false);
     }
 }
