@@ -61,4 +61,14 @@ public class CharacterAnimations : MonoBehaviour
     {
         animator.transform.SetParent(null);
     }
+
+    public void BeatUp()
+    {
+
+    }
+
+    public void Shoot()
+    {
+
+    }
 }
