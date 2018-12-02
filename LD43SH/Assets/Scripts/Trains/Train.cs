@@ -10,6 +10,7 @@ public class Train : MonoBehaviour
     private TrainStopper stopper;
     private TrainWorkerSpawner workerSpawner;
     private float distance, startSplineSpeed;
+    float lastTrainTime = 0;
 
     void Awake()
     {
@@ -33,6 +34,10 @@ public class Train : MonoBehaviour
 
     public void StopTrain()
     {
+        if (lastTrainTime + 5 > Time.time) //quick fix a weird bug
+            return;
+        lastTrainTime = Time.time;
+
         spline.IsRunning = false;
         workerSpawner.SpawnWorkers(manager.TrainScenarios[0].numberOfPeople);
         manager.TrainArrive();
