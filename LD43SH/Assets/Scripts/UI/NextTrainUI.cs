@@ -32,10 +32,11 @@ public class NextTrainUI : MonoBehaviour
 
     private void UpdateState()
     {
+        UpdateTrainTimeSlider();
+
         TrainScenario info = TrainManager.Instance.TrainScenarios[0];
         float available, needed;
-        
-        
+               
 
         // wood
         if (info.minimalWoodValue == 0)
@@ -108,5 +109,13 @@ public class NextTrainUI : MonoBehaviour
             workerTxt.text = "Workers: " + (int)available + " / " + (int)needed;
             sliderWood.value = available / needed;
         }
+    }
+
+    void UpdateTrainTimeSlider()
+    {
+        float remainingDays = TrainManager.Instance.numberOfDaysToNextTrain - 1;
+        float dayTime = DayTimeManager.instance.dayLength - DayTimeManager.instance.currentDayLength;
+        float remainingGime = (remainingDays * DayTimeManager.instance.dayLength + dayTime) / DayTimeManager.instance.dayLength / 7;
+        sliderTime.value = remainingGime;
     }
 }

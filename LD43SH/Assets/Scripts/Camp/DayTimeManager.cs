@@ -11,7 +11,7 @@ public class DayTimeManager : MonoBehaviour
     public int dayNumber = 1;
     public float dayLength = 120;
     public Light globalLight;
-    private float currentDayLength = 0;
+    public float currentDayLength = 0;
 
     public static DayTimeManager instance;
     public Action OnDayEnd; 

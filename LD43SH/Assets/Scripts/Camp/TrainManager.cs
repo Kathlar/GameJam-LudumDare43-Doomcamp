@@ -9,7 +9,7 @@ public class TrainManager : MonoBehaviour
 
     protected CampResources resources;
     public List<TrainScenario> TrainScenarios;
-    private int numberOfDaysToNextTrain;
+    public int numberOfDaysToNextTrain;
     public Train train;
 
     void Awake()
