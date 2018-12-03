@@ -47,12 +47,12 @@ public class Train : MonoBehaviour
 
     private void SpawnTrain()
     {
-        gameObject.SetActive(true);
+        // gameObject.SetActive(true);
     }
 
     private void DespawnTrain()
     {
-        gameObject.SetActive(false);
+        // gameObject.SetActive(false);
     }
 
     public void Arrive()
