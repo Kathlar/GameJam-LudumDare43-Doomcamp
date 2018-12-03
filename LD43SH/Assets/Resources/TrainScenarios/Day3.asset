@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ccc5a3754a80ef42b8f535f9a6dbc45, type: 3}
   m_Name: Day3
   m_EditorClassIdentifier: Assembly-CSharp::TrainScenario
-  food: 40
+  food: 50
   numberOfPeople: 40
   numberOfDaysToNextTrain: 7
   minimalWoodValue: 75
