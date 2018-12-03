@@ -7,6 +7,7 @@ public class WorkplaceMiniPanel : MiniPanel
 {
     public Workplace workplace;
     public Text text;
+    public GameObject needMoreToolsMenu;
 
     protected override void Start()
     {
@@ -35,6 +36,11 @@ public class WorkplaceMiniPanel : MiniPanel
             "Working: " + workplace.workers.Count;
         if (workplace.workersWithoutTools > 0)
             text.text += "\n(" + workplace.workersWithoutTools + " with no tools)";
+
+        if (workplace.workersWithoutTools * 2 >= workplace.workers.Count && workplace.workers.Count > 0)
+            needMoreToolsMenu.SetActive(true);
+        else
+            needMoreToolsMenu.SetActive(false);
     }
 
     public void SetWorkers()
