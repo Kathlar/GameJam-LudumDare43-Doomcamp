@@ -23,7 +23,7 @@ public class Guard : MonoBehaviour
     private void Start()
     {
         Camera.main.transform.parent.parent.GetComponent<CameraController>()
-            .StartGuardLerp(transform.position);
+            .StartCamLerp(transform.position);
 
         if (guardSpot == Vector3.zero)
             guardSpot = transform.position;

@@ -40,6 +40,7 @@ public class CameraController : MonoBehaviour
         unzoomedTransform.transform.parent = cameraDolly.transform.parent;
 
         lastMousePosition = Input.mousePosition;
+        rotationValue = transform.eulerAngles.y;
     }
 
     private void Update()
@@ -136,7 +137,7 @@ public class CameraController : MonoBehaviour
         cameraDolly.transform.rotation = Quaternion.Slerp(cameraDolly.transform.rotation, zoomRotation, zoomFollowSpeed * Time.deltaTime);
     }
 
-    public void StartGuardLerp(Vector3 position)
+    public void StartCamLerp(Vector3 position)
     {
         guardLerpStartPos = transform.position;
         desiredGuardPos = position;
