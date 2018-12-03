@@ -16,7 +16,6 @@ public class WorkplaceMiniPanel : MiniPanel
         if (workplace == null) workplace = FindObjectOfType<Workplace>();
         objectPanel = workplace.transform;
         base.Start();
-        namePanel.text = "Workplace (" + workplace.resourceType.ToString() + ")";
     }
 
     protected override void Update()
@@ -32,9 +31,10 @@ public class WorkplaceMiniPanel : MiniPanel
         slider.value = desiredValue / maxValue;
         currentValueText.text = Mathf.Floor(slider.value * maxValue).ToString();
 
-        text.text = 
-            "Working: " + workplace.workers.Count + "\n(" +
-            workplace.workersWithoutTools + " with no tools)";
+        text.text =
+            "Working: " + workplace.workers.Count;
+        if (workplace.workersWithoutTools > 0)
+            text.text += "\n(" + workplace.workersWithoutTools + " with no tools)";
     }
 
     public void SetWorkers()
