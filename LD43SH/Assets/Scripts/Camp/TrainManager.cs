@@ -29,10 +29,12 @@ public class TrainManager : MonoBehaviour
     public void TrainSpawn()
     {
         numberOfDaysToNextTrain--;
-        Camera.main.transform.parent.parent.GetComponent<CameraController>()
-            .StartCamLerp(new Vector3(-30, 0, 16.5f));
         if (numberOfDaysToNextTrain <= 0)
+        {
+            Camera.main.transform.parent.parent.GetComponent<CameraController>()
+                .StartCamLerp(new Vector3(-30, 0, 16.5f));
             train.SpawnTrain();
+        }
     }
 
     public void TrainArrive()
