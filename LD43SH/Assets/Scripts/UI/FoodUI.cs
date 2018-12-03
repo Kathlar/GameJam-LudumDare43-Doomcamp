@@ -42,6 +42,7 @@ public class FoodUI : MonoBehaviour
         {
             float survivedSeconds = 120 / (1 - CampResources.instance.foodRationsRate);
             float survivedDays = survivedSeconds / dayLength;
+            survivedDays -= 0.5f; // just to be a bit pessimistic :3
 
             if (survivedDays > 14)
                 survivalTimeText.text = "14+ days";
