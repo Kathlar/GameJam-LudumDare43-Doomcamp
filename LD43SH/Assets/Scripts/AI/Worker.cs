@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Worker : MonoBehaviour
 {
-    float food;
-    float health = 1.0f;
+    public float food;
+    public float health = 1.0f;
     public Workplace workplace;
     public Freezer freezer;
     
