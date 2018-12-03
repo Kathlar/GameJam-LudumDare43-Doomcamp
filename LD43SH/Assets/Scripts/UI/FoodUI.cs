@@ -9,7 +9,8 @@ public class FoodUI : MonoBehaviour
     float lastFood;
     float curFood;
 
-    public Text text;
+    public Text text1;
+    public Text text2;
     public Text survivalTimeText;
     public Slider slider;
 
@@ -29,7 +30,8 @@ public class FoodUI : MonoBehaviour
 
         if (diff < 0) return; // train added new food
 
-        text.text = ((int)curFood) + " (-" + ((int)changePerDay) + ")";
+        text1.text = ((int)curFood).ToString();
+        text2.text = "-" + ((int)changePerDay) + "/day";
     }
     
     void SurvivalTimeUpdate()
@@ -47,7 +49,7 @@ public class FoodUI : MonoBehaviour
             if (survivedDays > 14)
                 survivalTimeText.text = "14+ days";
             else
-                survivalTimeText.text = survivedDays.ToString("0.00") + " days";
+                survivalTimeText.text = survivedDays.ToString("0.0") + " days";
         }
     }
 }
