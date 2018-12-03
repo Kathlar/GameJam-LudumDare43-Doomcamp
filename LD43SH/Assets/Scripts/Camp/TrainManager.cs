@@ -33,7 +33,7 @@ public class TrainManager : MonoBehaviour
         {
             Camera.main.transform.parent.parent.GetComponent<CameraController>()
                 .StartCamLerp(new Vector3(-30, 0, 16.5f));
-            train.SpawnTrain();
+            train.Arrive();
         }
     }
 
