@@ -11,6 +11,8 @@ public class TrainInfo : MonoBehaviour
     public Text takenText, givenText;
     public Text infoText;
     public Button closeBtn;
+    public GameObject gameLoosePanel;
+    public GameObject gameWonPanel;
 
     void Awake()
     {
@@ -31,12 +33,32 @@ public class TrainInfo : MonoBehaviour
         }
     }
 
+    public void ShowLooseInfo()
+    {
+        Time.timeScale = 0.0F;
+        gameLoosePanel.SetActive(true);
+    }
+
+    public void ShowWonInfo()
+    {
+        Time.timeScale = 0.0F;
+        gameWonPanel.SetActive(true);
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+
     public void ShowTrainInfo(TrainScenario scenario, bool gotEnoughResourcess)
     {
         if (!gotEnoughResourcess)
         {
-            Time.timeScale = 1;
-            SceneManager.LoadScene(0);
+            ShowLooseInfo();
+        }
+        else if (scenario.name == "Day6")
+        {
+            ShowWonInfo();
         }
 
         showing = true;
