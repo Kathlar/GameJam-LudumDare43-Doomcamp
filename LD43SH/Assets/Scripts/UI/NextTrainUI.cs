@@ -10,6 +10,12 @@ public class NextTrainUI : MonoBehaviour
     public Text steelTxt;
     public Text workerTxt;
 
+    public Slider sliderWood;
+    public Slider sliderBoulder;
+    public Slider sliderSteel;
+    public Slider sliderWorker;
+    public Slider sliderTime;
+
     public GameObject woodOkTag;
     public GameObject boulderOkTag;
     public GameObject steelOkTag;
@@ -26,9 +32,12 @@ public class NextTrainUI : MonoBehaviour
 
     private void UpdateState()
     {
+        UpdateTrainTimeSlider();
+
         TrainScenario info = TrainManager.Instance.TrainScenarios[0];
         float available, needed;
-        
+               
+
         // wood
         if (info.minimalWoodValue == 0)
         {
@@ -44,6 +53,7 @@ public class NextTrainUI : MonoBehaviour
             woodOkTag.SetActive(available == needed);
             woodFailTag.SetActive(available != needed);
             woodTxt.text = "Lumber: " + (int)available + " / " + (int)needed;
+            sliderWood.value = available / needed;
         }
 
         // stone
@@ -61,6 +71,7 @@ public class NextTrainUI : MonoBehaviour
             boulderOkTag.SetActive(available == needed);
             boulderFailTag.SetActive(available != needed);
             boulderTxt.text = "Boulders: " + (int)available + " / " + (int)needed;
+            sliderBoulder.value = available / needed;
         }
 
         //steel
@@ -78,6 +89,7 @@ public class NextTrainUI : MonoBehaviour
             steelOkTag.SetActive(available == needed);
             steelFailTag.SetActive(available != needed);
             steelTxt.text = "Steel: " + (int)available + " / " + (int)needed;
+            sliderSteel.value = available / needed;
         }
 
         //workers
@@ -95,6 +107,15 @@ public class NextTrainUI : MonoBehaviour
             workerOkTag.SetActive(available == needed);
             workerFailTag.SetActive(available != needed);
             workerTxt.text = "Workers: " + (int)available + " / " + (int)needed;
+            sliderWood.value = available / needed;
         }
+    }
+
+    void UpdateTrainTimeSlider()
+    {
+        float remainingDays = TrainManager.Instance.numberOfDaysToNextTrain - 1;
+        float dayTime = DayTimeManager.instance.dayLength - DayTimeManager.instance.currentDayLength;
+        float remainingGime = (remainingDays * DayTimeManager.instance.dayLength + dayTime) / DayTimeManager.instance.dayLength / 7;
+        sliderTime.value = remainingGime;
     }
 }

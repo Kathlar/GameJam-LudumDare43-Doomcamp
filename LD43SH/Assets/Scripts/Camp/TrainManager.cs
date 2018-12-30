@@ -9,7 +9,7 @@ public class TrainManager : MonoBehaviour
 
     protected CampResources resources;
     public List<TrainScenario> TrainScenarios;
-    private int numberOfDaysToNextTrain;
+    public int numberOfDaysToNextTrain;
     public Train train;
 
     void Awake()
@@ -29,8 +29,12 @@ public class TrainManager : MonoBehaviour
     public void TrainSpawn()
     {
         numberOfDaysToNextTrain--;
-        if(numberOfDaysToNextTrain <= 0)
-            train.SpawnTrain();
+        if (numberOfDaysToNextTrain <= 0)
+        {
+            Camera.main.transform.parent.parent.GetComponent<CameraController>()
+                .StartCamLerp(new Vector3(-30, 0, 16.5f));
+            train.Arrive();
+        }
     }
 
     public void TrainArrive()

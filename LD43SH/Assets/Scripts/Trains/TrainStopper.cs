@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class TrainStopper : MonoBehaviour
 {
-    void OnTriggerEnter(Collider col)
-    {
-        Train train = col.GetComponent<Train>();
-        if (train != null)
-        {
-            train.StopTrain();
-            Debug.Log("Train Stopped");
-        }
-    }
-
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

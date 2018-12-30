@@ -40,13 +40,14 @@ public class CameraController : MonoBehaviour
         unzoomedTransform.transform.parent = cameraDolly.transform.parent;
 
         lastMousePosition = Input.mousePosition;
+        rotationValue = transform.eulerAngles.y;
     }
 
     private void Update()
     {
         if (guardLerpProgress < 1)
         {
-            guardLerpProgress = Mathf.Clamp(guardLerpProgress + Time.deltaTime, 0, 1);
+            guardLerpProgress = Mathf.Clamp(guardLerpProgress + Time.unscaledDeltaTime, 0, 1);
 
             float lerper = 
                 3 * guardLerpProgress * guardLerpProgress -
@@ -77,7 +78,7 @@ public class CameraController : MonoBehaviour
             newPosition = newPosition.normalized * maxDistance;
         }
 
-        transform.position = Vector3.Lerp(transform.position, newPosition, Time.deltaTime * moveFollowSpeed);
+        transform.position = Vector3.Lerp(transform.position, newPosition, Time.unscaledDeltaTime * moveFollowSpeed);
 
         UpdateZoom();
 
@@ -88,8 +89,8 @@ public class CameraController : MonoBehaviour
     {
         Vector3 delta = new Vector3();
 
-        delta.x = mousePositionDelta.x * moveSpeed * moveMouseSensitivity * Time.deltaTime;
-        delta.z = mousePositionDelta.y * moveSpeed * moveMouseSensitivity * Time.deltaTime;
+        delta.x = mousePositionDelta.x * moveSpeed * moveMouseSensitivity * Time.unscaledDeltaTime;
+        delta.z = mousePositionDelta.y * moveSpeed * moveMouseSensitivity * Time.unscaledDeltaTime;
 
         delta = transform.localToWorldMatrix * delta;
 
@@ -102,8 +103,8 @@ public class CameraController : MonoBehaviour
     {
         Vector3 delta = new Vector3();
 
-        delta.x = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        delta.z = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        delta.x = Input.GetAxis("Horizontal") * moveSpeed * Time.unscaledDeltaTime;
+        delta.z = Input.GetAxis("Vertical") * moveSpeed * Time.unscaledDeltaTime;
 
         delta = transform.localToWorldMatrix * delta;
 
@@ -114,11 +115,11 @@ public class CameraController : MonoBehaviour
 
     protected void RotateWithMouse()
     {
-        rotationValue += mousePositionDelta.x * Time.deltaTime * rotationSpeed;
+        rotationValue += mousePositionDelta.x * Time.unscaledDeltaTime * rotationSpeed;
 
         Vector3 orientation = transform.eulerAngles;
 
-        orientation.y = Mathf.LerpAngle(orientation.y, rotationValue, Time.deltaTime * rotationFollowSpeed);
+        orientation.y = Mathf.LerpAngle(orientation.y, rotationValue, Time.unscaledDeltaTime * rotationFollowSpeed);
 
         transform.eulerAngles = orientation;
     }
@@ -128,15 +129,15 @@ public class CameraController : MonoBehaviour
         Vector3 zoomPosition = cameraDolly.transform.localPosition;
         Quaternion zoomRotation = cameraDolly.transform.rotation;
 
-        zoomValue = Mathf.Clamp01(zoomValue + Input.GetAxis("Mouse ScrollWheel") * -zoomSpeed * Time.deltaTime);
+        zoomValue = Mathf.Clamp01(zoomValue + Input.GetAxis("Mouse ScrollWheel") * -zoomSpeed * Time.unscaledDeltaTime);
         zoomPosition = Vector3.Lerp(zoomedTransform.position, unzoomedTransform.position, zoomValue);
         zoomRotation = Quaternion.Slerp(zoomedTransform.rotation, unzoomedTransform.rotation, zoomValue);
 
-        cameraDolly.transform.position = Vector3.Lerp(cameraDolly.transform.position, zoomPosition, zoomFollowSpeed * Time.deltaTime);
-        cameraDolly.transform.rotation = Quaternion.Slerp(cameraDolly.transform.rotation, zoomRotation, zoomFollowSpeed * Time.deltaTime);
+        cameraDolly.transform.position = Vector3.Lerp(cameraDolly.transform.position, zoomPosition, zoomFollowSpeed * Time.unscaledDeltaTime);
+        cameraDolly.transform.rotation = Quaternion.Slerp(cameraDolly.transform.rotation, zoomRotation, zoomFollowSpeed * Time.unscaledDeltaTime);
     }
 
-    public void StartGuardLerp(Vector3 position)
+    public void StartCamLerp(Vector3 position)
     {
         guardLerpStartPos = transform.position;
         desiredGuardPos = position;

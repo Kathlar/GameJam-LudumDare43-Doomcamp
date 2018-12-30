@@ -7,8 +7,7 @@ using Random = UnityEngine.Random;
 
 public class Worker : MonoBehaviour
 {
-    float health = 1.0f;
-
+    public float health = 1.0f;
     public Workplace currentWorkplace;
     public ActivityInfo currentActivity;
     private Dictionary<string, Action<object>> taskGenerators;

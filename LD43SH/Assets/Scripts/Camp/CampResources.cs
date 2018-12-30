@@ -19,7 +19,7 @@ public class CampResources : MonoBehaviour
 
     public int numberOfPeople;
     public int numberOfGuards;
-    public Text numberOfPeopleText, numberOfGuardsText;
+    public Text totalPeopleText, idlePeopleText, numberOfGuardsText;
 
     public static CampResources instance;
     public float foodRationsRate = 0.5f;
@@ -60,7 +60,8 @@ public class CampResources : MonoBehaviour
             if (!w.currentWorkplace)
                 ++idleWorkerCount;
 
-        numberOfPeopleText.text = "Workers\n" + idleWorkerCount + "/" + workerCount;
+        totalPeopleText.text = "Total: " + workerCount;
+        idlePeopleText.text = "Idle: " + idleWorkerCount;
         numberOfGuardsText.text = "Guards\n" + numberOfGuards.ToString();
     }
 

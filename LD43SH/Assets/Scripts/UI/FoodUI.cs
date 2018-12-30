@@ -9,19 +9,19 @@ public class FoodUI : MonoBehaviour
     float lastFood;
     float curFood;
 
-    public Text text;
-    public Text sliderPercent;
+    public Text text1;
+    public Text text2;
+    public Text survivalTimeText;
     public Slider slider;
 
     private void Start()
     {
         InvokeRepeating("UpdateState", 0.1f, 1.0f);
-        SliderValueChanged(slider.value);
-        slider.onValueChanged.AddListener(SliderValueChanged);
     }
 
     void UpdateState()
     {
+        SurvivalTimeUpdate();
         lastFood = curFood;
         curFood = CampResources.instance.food.value;
 
@@ -30,11 +30,26 @@ public class FoodUI : MonoBehaviour
 
         if (diff < 0) return; // train added new food
 
-        text.text = ((int)curFood) + " (-" + ((int)changePerDay) + ")";
+        text1.text = ((int)curFood).ToString();
+        text2.text = "-" + ((int)changePerDay) + "/day";
     }
+    
+    void SurvivalTimeUpdate()
+    {        
+        if (CampResources.instance.foodRationsRate > 0.9f)
+        {
+            survivalTimeText.text = "14+ days";
+        }
+        else
+        {
+            float survivedSeconds = 120 / (1 - CampResources.instance.foodRationsRate);
+            float survivedDays = survivedSeconds / dayLength;
+            survivedDays -= 0.5f; // just to be a bit pessimistic :3
 
-    void SliderValueChanged(float val)
-    {
-        sliderPercent.text = ((int)(slider.value * 100)).ToString();
+            if (survivedDays > 14)
+                survivalTimeText.text = "14+ days";
+            else
+                survivalTimeText.text = survivedDays.ToString("0.0") + " days";
+        }
     }
 }

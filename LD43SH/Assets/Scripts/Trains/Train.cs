@@ -5,53 +5,81 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
-    [HideInInspector] public TrainManager manager;
-    protected SplineFollow spline;
+    [HideInInspector]
+    public TrainManager manager;
     private TrainStopper stopper;
     private TrainWorkerSpawner workerSpawner;
-    private float distance, startSplineSpeed;
     float lastTrainTime = 0;
+    bool isArriving = false;
+    bool isLeaving = false;
+    float spawnDistance = 200.0F;
 
     void Awake()
     {
-        spline = GetComponent<SplineFollow>();
         stopper = FindObjectOfType<TrainStopper>();
         workerSpawner = gameObject.GetComponent<TrainWorkerSpawner>();
-        startSplineSpeed = spline.Speed;
     }
 
     void Update()
     {
-        distance = Vector3.Distance(transform.position, stopper.transform.position - Vector3.right * 4);
-        spline.Speed = startSplineSpeed * Mathf.Clamp((distance + 5) / 30, 0, 1);
+        float distance = Vector3.Distance(transform.position, stopper.transform.position);
+        
+        if (isArriving && distance < 2.0F)
+        {
+            StopTrain();
+        }
+        else if (isLeaving && distance > spawnDistance)
+        {
+            DespawnTrain();
+        }
+        
+        if (isArriving || isLeaving)
+        {
+            Vector3 position = transform.position;
+
+            float speed = Mathf.Clamp(distance, 0.0F, 30.0F);
+
+            position.x += speed * Time.deltaTime;
+
+            transform.position = position;
+        }
     }
 
-    public void SpawnTrain()
+    private void SpawnTrain()
     {
-        spline.IsRunning = true;
-        spline.IsLoop = false;
+        // gameObject.SetActive(true);
     }
 
-    public void StopTrain()
+    private void DespawnTrain()
     {
-        if (lastTrainTime + 10 > Time.time) //quick fix a weird bug
-            return;
-        lastTrainTime = Time.time;
+        // gameObject.SetActive(false);
+    }
 
-        spline.IsRunning = false;
+    public void Arrive()
+    {
+        SpawnTrain();
+        isArriving = true;
+        GetComponent<AudioSource>().Play();
+
+        Vector3 position = transform.position;
+
+        position.x = stopper.transform.position.x - spawnDistance;
+
+        transform.position = position;
+    }
+
+    private void Leave()
+    {
+        isLeaving = true;
+        GetComponent<AudioSource>().Play();
+    }
+
+    private void StopTrain()
+    {
+        isArriving = false;
+
         workerSpawner.SpawnWorkers(manager.TrainScenarios[0].numberOfPeople);
         manager.TrainArrive();
-        Invoke("StartTrain", 5);
-    }
-
-    public void StartTrain()
-    {
-        spline.IsRunning = true;
-    }
-
-    public void DespawnTrain()
-    {
-        spline.IsLoop = true;
-        spline.IsRunning = false;
+        Invoke("Leave", 5);
     }
 }
