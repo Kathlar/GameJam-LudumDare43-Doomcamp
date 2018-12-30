@@ -12,6 +12,6 @@ public class WorkplaceTester : MonoBehaviour
     void Test()
     {
         foreach (Worker worker in WorkerManager.workers)
-            worker.StartWorking(GetComponent<Workplace>());
+            worker.SetWorkplace(GetComponent<Workplace>());
     }
 }

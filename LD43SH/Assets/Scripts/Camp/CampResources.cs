@@ -57,7 +57,7 @@ public class CampResources : MonoBehaviour
         int idleWorkerCount = 0;
 
         foreach (Worker w in WorkerManager.workers)
-            if (!w.workplace)
+            if (!w.currentWorkplace)
                 ++idleWorkerCount;
 
         numberOfPeopleText.text = "Workers\n" + idleWorkerCount + "/" + workerCount;

@@ -7,6 +7,7 @@ public class Workplace : MonoBehaviour
 {
     public ActionData[] actions;
     public ResourceType resourceType;
+    public ToolType toolType;
     [Range(0, 100)]
     public int desiredWorkersCount;
     public List<Worker> workers;
@@ -55,10 +56,11 @@ public class Workplace : MonoBehaviour
         {
             foreach (Worker worker in WorkerManager.workers)
             {
-                if (worker.workplace == null && worker.canWork)
+                if (worker.currentActivity != null &&
+                    worker.currentActivity.workState == WorkState.available)
                 {
                     workers.Add(worker);
-                    worker.StartWorking(this);
+                    worker.SetWorkplace(this);
 
                     break;
                 }
@@ -69,7 +71,7 @@ public class Workplace : MonoBehaviour
             Worker worker = workers[workers.Count - 1];
 
             workers.Remove(worker);
-            worker.StartIdle();
+            worker.SetWorkplace(null);
         }
     }
 
@@ -79,7 +81,7 @@ public class Workplace : MonoBehaviour
 
         effitiency += gain * workers.Count / 2;
 
-        if (resourceType == ResourceType.Boulders)
+        if (toolType == ToolType.pick)
         {
             int tools = Mathf.Clamp(
                 workers.Count,
@@ -90,7 +92,7 @@ public class Workplace : MonoBehaviour
             effitiency += gain * tools / 2;
             workersWithoutTools = workers.Count - tools;
         }
-        else if (resourceType == ResourceType.Lumber)
+        else if (toolType == ToolType.axe)
         {
             int tools = Mathf.Clamp(
                 workers.Count,
@@ -100,7 +102,7 @@ public class Workplace : MonoBehaviour
             effitiency += gain * tools / 2;
             workersWithoutTools = workers.Count - tools;
         }
-        else if (resourceType == ResourceType.Steel)
+        else if (toolType == ToolType.hammer)
         {
             int tools = Mathf.Clamp(
                 workers.Count,
@@ -120,9 +122,6 @@ public class Workplace : MonoBehaviour
 
     public void OnDayEnd()
     {
-        for (int i = 0; i < workersWithoutTools && i < workers.Count; ++i)
-            workers[i].WorkedWithNoTools();
-
         int toolsDestroyed = (workers.Count - workersWithoutTools) / 10;
 
         if (resourceType == ResourceType.Boulders)
@@ -190,9 +189,21 @@ public class Workplace : MonoBehaviour
         level += 1;
     }
 
-    public ActionData GetAction()
+    public ActivityInfo GetActivity()
     {
-        return actions[Random.Range(0, actions.Length - 1)];
+        ActivityInfo result = new ActivityInfo();
+        result.source = this;
+        result.name = "Work at " + name;
+        result.toolRequiredID = toolType;
+        result.workState = WorkState.busy;
+        result.tireRate = 0.5f;
+
+        ActionData actionData = actions[Random.Range(0, actions.Length - 1)];
+        result.AddAction("GoTo", actionData.place.position);
+        result.AddAction("PlayAnimation", "Work"/*actionData.animName*/);
+        result.AddAction("Wait", actionData.time);
+
+        return result;
     }
 }
 

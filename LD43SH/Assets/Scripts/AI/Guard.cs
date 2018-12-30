@@ -47,14 +47,14 @@ public class Guard : MonoBehaviour
         if (cdCur > Time.time) return;
         if (isPursuingASlacker) return;        
         Worker w = other.GetComponent<Worker>();
-        if (!w || w.canWork) return;
+        if (!w || w.currentActivity.punishmentCriteria == PunishmentCriteria.nothing) return;
 
         cdCur = Time.time + cd;
         isPursuingASlacker = true;
 
-        if (w.curState == WorkerState.running)
+        if (w.currentActivity.punishmentCriteria == PunishmentCriteria.execution)
             StartCoroutine(ShootEscapingDude(w));
-        else
+        else if (w.currentActivity.punishmentCriteria == PunishmentCriteria.beating)
             StartCoroutine(StartPacifyingADude(w));
     }
 
@@ -101,7 +101,7 @@ public class Guard : MonoBehaviour
         }
 
         animations.BeatUp();
-        worker.StartGettingBeaten();
+        worker.BeginActivityGetBeaten();
         agent.SetDestination(transform.position);
         // trigger some animation
 

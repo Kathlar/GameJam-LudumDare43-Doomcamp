@@ -5,7 +5,7 @@ using UnityEngine;
 public class WorkerManager : MonoBehaviour
 {
     public static List<Worker> workers = new List<Worker>();
-    public List<Workplace> workplaces;
+    public Worker workerPrefab;
 
     public static WorkerManager instance;
 
@@ -30,15 +30,15 @@ public class WorkerManager : MonoBehaviour
     {
         workers.Remove(worker);
     }
-
-    public static void WorkerNew(Worker worker)
+    
+    public static Worker SpawnWorker(Vector3 position, Quaternion rotation)
     {
-        if (!workers.Contains(worker))
-            workers.Add(worker);
+        Worker worker = Instantiate(instance.workerPrefab, position, rotation);
 
-        if (instance != null)
-        {
-            worker.transform.parent = instance.transform;
-        }
+        workers.Add(worker);        
+        worker.Init(instance);
+        worker.transform.parent = instance.transform;
+
+        return worker;
     }
 }

@@ -13,7 +13,7 @@ public class TrainWorkerSpawner : MonoBehaviour
         for (int i = 0; i < count; ++i)
         {
             Transform vagon = workerVagons[i % workerVagons.Count];
-            Worker worker = Instantiate(workerPrefab, vagon.transform.position, Quaternion.identity);
+            Worker worker = WorkerManager.SpawnWorker(vagon.transform.position, Quaternion.identity);
             Vector3 destination = worker.transform.position;
 
             destination -= worker.transform.position.normalized * 10;

@@ -2718,8 +2718,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012f330a574a87944951e0d037aec2ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  workplaces:
-  - {fileID: 0}
+  workerPrefab: {fileID: 114175860636544034, guid: 825038c4170da5a43a1f31719060ef9d,
+    type: 2}
 --- !u!1001 &270493325
 Prefab:
   m_ObjectHideFlags: 0
@@ -6949,6 +6949,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   resourceType: 4
+  toolType: 0
   desiredWorkersCount: 0
   workers: []
   gain: 0.05
@@ -9903,6 +9904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   resourceType: 6
+  toolType: 0
   desiredWorkersCount: 0
   workers: []
   gain: 0.03
@@ -14075,6 +14077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   resourceType: 7
+  toolType: 0
   desiredWorkersCount: 0
   workers: []
   gain: 0.03
@@ -14729,6 +14732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   resourceType: 2
+  toolType: 0
   desiredWorkersCount: 0
   workers: []
   gain: 0.05
@@ -15884,6 +15888,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   resourceType: 3
+  toolType: 0
   desiredWorkersCount: 0
   workers: []
   gain: 0.05
@@ -17973,6 +17978,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions: []
   resourceType: 5
+  toolType: 0
   desiredWorkersCount: 0
   workers: []
   gain: 0.03

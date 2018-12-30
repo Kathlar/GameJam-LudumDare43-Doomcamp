@@ -26,11 +26,14 @@ public class WorkerMoodUI : MonoBehaviour
 
     void UpdateState()
     {
-        if (worker.curState == WorkerState.slacking)
+        if (worker.currentActivity == null)
+            return;
+
+        if (worker.currentActivity.name == "Slacking")
         {
             slackPrompt.SetActive(true);
         }
-        else if (worker.curState == WorkerState.running)
+        else if (worker.currentActivity.name == "Attempting escape")
         {
             runPrompt.SetActive(true);
         }
